@@ -19,7 +19,7 @@ LoadingSpinner.propTypes = {
 };
 
 LoadingSpinner.defaultProps = {
-  color: colors.blue,
+  color: colors.green,
 };
 
 export default LoadingSpinner;

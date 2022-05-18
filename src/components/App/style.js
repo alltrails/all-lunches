@@ -1,11 +1,6 @@
 import styled from 'styled-components';
 import { media } from 'styles';
 
-export const Wrapper = styled.div`
-  position: relative;
-  height: 100vh;
-`;
-
 export const LoadingWrapper = styled.div`
   display: flex;
   min-height: 100vh;

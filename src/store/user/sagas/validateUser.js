@@ -6,7 +6,7 @@ import Config from 'config'; // eslint-disable-line
 import {
   getAuth,
   signInAnonymously,
-  browserSessionPersistence,
+  browserLocalPersistence,
   setPersistence,
   onAuthStateChanged,
 } from 'firebase/auth';
@@ -14,7 +14,7 @@ import { initializeAppCheck, ReCaptchaV3Provider } from 'firebase/app-check';
 
 import { VALIDATE_USER, validateUser } from '../actions';
 
-const debug = Debug('allLunches:store:user:sagas:validateUser');
+const debug = Debug('all-lunches:store:user:sagas:validateUser');
 
 const handleAuthChangeState = (auth) =>
   new Promise((resolve) => {
@@ -49,7 +49,7 @@ export function* validateUserSaga({ payload: app }) {
       // set persistence to browserLocalPersistence
       // user = this.data();
     } else {
-      yield call(setPersistence, auth, browserSessionPersistence);
+      yield call(setPersistence, auth, browserLocalPersistence);
       yield call(signInAnonymously, auth);
 
       debug('Logged in anonymously');

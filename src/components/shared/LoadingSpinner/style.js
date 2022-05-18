@@ -40,7 +40,13 @@ export const RingSpinner = styled.div`
     animation: ${ringspin} 1.2s cubic-bezier(.57,.05,.58,.94) infinite;
   }
 
-  & div:nth-child(1) { animation-delay: -0.25s; }
-  & div:nth-child(2) { animation-delay: -0.17s; }
-  & div:nth-child(3) { animation-delay: -0.1s; }
+  & div:nth-child(1) {
+    animation-delay: -0.25s;
+  }
+  & div:nth-child(2) {
+    animation-delay: -0.17s;
+  }
+  & div:nth-child(3) {
+    animation-delay: -0.1s;
+  }
 `;
