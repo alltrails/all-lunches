@@ -1,7 +1,6 @@
 **All Lunches**
 
 - Mobile view
-- Favorites
 - Tests
 
 Known issues and warnings

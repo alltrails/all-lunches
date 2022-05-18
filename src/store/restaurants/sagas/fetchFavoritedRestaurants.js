@@ -16,8 +16,8 @@ export function* fetchFavoritedRestaurantsSaga({ payload: userId }) {
     const restaurantUserRef = doc(db, 'restaurants', userId);
     const docSnap = yield call(getDoc, restaurantUserRef);
 
-    let favorites = [];
-    ({ favorites } = docSnap.data());
+    const data = docSnap.data();
+    const favorites = data?.favorites || [];
 
     debug('Restaurant favorite user data fetched', favorites);
 
