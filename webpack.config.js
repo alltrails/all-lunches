@@ -34,10 +34,11 @@ const webpackConfig = {
   },
   plugins: [
     new HTMLWebpackPlugin({
-      template: path.resolve(__dirname, 'public', 'index.html'),
       filename: 'index.html',
-      segmentKey: config.segmentKey,
+      googlePlacesAPIKey: `https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_PLACES_API}&libraries=places`,
       isAnalyticsEnabled: config.isAnalyticsEnabled,
+      segmentKey: config.segmentKey,
+      template: path.resolve(__dirname, 'public', 'index.html'),
     }),
     new CopyWebpackPlugin({
       patterns: [

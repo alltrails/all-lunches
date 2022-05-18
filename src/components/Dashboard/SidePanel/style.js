@@ -32,8 +32,12 @@ export const CardItem = styled.li`
   `}
 `;
 
-export const FavoriteHeartButton = styled(TransparentButton)`
+export const FavoriteHeartWrapper = styled.div`
   position: absolute;
   top: 10%;
   right: 2%;
+`;
+
+export const FavoriteHeartButton = styled(TransparentButton)`
+  position: relative;
 `;

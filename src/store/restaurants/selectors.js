@@ -6,8 +6,10 @@ import preloadImage from 'lib/preloadImage';
 import { toGeoJSONFeature } from 'lib/mapUtils';
 import { generateGoogleMapsUrl, getPhotoUrl } from 'lib/restaurantsListUtils';
 
+export const favoritedItemIdsSelector = (state) => state.restaurants.favoritedItemIds;
 export const highlightedRestaurantIdSelector = (state) => state.restaurants.highlightedRestaurantId;
 export const isLoadingSelector = (state) => state.restaurants.isLoading;
+export const isUpdatingFavoritesSelector = (state) => state.restaurants.isUpdatingFavorites;
 export const restaurantsSelector = (state) => state.restaurants.restaurants;
 export const selectedFilterOptionSelector = (state) => state.restaurants.selectedFilterOption;
 
@@ -60,7 +62,7 @@ export const restaurantsFilteredListSelector = createSelector(
   },
 );
 
-export const highlightedRestaurantMapSelector = createSelector(
+export const highlightedRestaurantSelector = createSelector(
   restaurantsFilteredListSelector,
   highlightedRestaurantIdSelector,
   (restaurantItems, restaurantId) =>
