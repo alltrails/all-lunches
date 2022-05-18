@@ -1,7 +1,7 @@
 import Config from 'config'; // eslint-disable-line
 import Debug from 'debug';
 
-const debug = Debug('allLunches:lib:analytics');
+const debug = Debug('all-lunches:lib:analytics');
 
 export const trackEvent = (event, properties) => {
   if (!Config.isAnalyticsEnabled) return;

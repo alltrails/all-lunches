@@ -15,9 +15,10 @@ import awaitAsyncAction from 'lib/awaitAsyncAction';
 
 import { setUserAgent } from 'store/userAgent/actions';
 import { VALIDATE_USER, validateUser } from 'store/user/actions';
+import { QUERY_AREA, queryArea } from 'store/restaurants/actions';
 import { initializeApplication } from 'store/app/actions';
 
-const debug = Debug('allLunches:store:app:sagas:sessionManager');
+const debug = Debug('all-lunches:store:app:sagas:sessionManager');
 
 function* setUserAgentAction() {
   const userAgent = UAParser();
@@ -28,7 +29,6 @@ function* enableOfflinePersistence(app) {
   const db = getFirestore(app);
 
   try {
-    // Subsequent queries will use persistence, if it was enabled successfully
     yield call(enableIndexedDbPersistence, db);
   } catch (error) {
     if (error.code == 'failed-precondition') {
@@ -57,6 +57,14 @@ export default function* initSessionManager() {
 
     if (errorAction) {
       const { payload: error } = errorAction;
+      if (error) throw error;
+    }
+
+    yield put(queryArea());
+    const [, mapErrorAction] = yield call(awaitAsyncAction, QUERY_AREA);
+
+    if (mapErrorAction) {
+      const { payload: error } = mapErrorAction;
       if (error) throw error;
     }
 

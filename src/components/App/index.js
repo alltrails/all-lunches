@@ -6,10 +6,8 @@ import { isAppInitializingSelector } from 'store/app/selectors';
 
 import LoadingSpinner from 'components/shared/LoadingSpinner';
 
-import Map from '../Map';
-import Header from '../Header';
-
-import { Wrapper, LoadingWrapper, LoadingTitle } from './style';
+import Dashboard from '../Dashboard';
+import { LoadingWrapper, LoadingTitle } from './style';
 
 const mapStateToProps = (state) => ({
   isLoading: isAppInitializingSelector(state),
@@ -27,12 +25,7 @@ const App = ({ isLoading }) => {
     );
   }
 
-  return (
-    <Wrapper>
-      <Header />
-      <Map />
-    </Wrapper>
-  );
+  return <Dashboard />;
 };
 
 App.propTypes = {

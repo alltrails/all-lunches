@@ -1,24 +1,30 @@
-import { any, shape, string, oneOfType, func, instanceOf, Element } from 'prop-types';
+import {
+  any,
+  arrayOf,
+  Element,
+  func,
+  instanceOf,
+  number,
+  oneOfType,
+  shape,
+  string,
+} from 'prop-types';
 
-export const textFieldThemeType = shape({
-  container: shape({
-    background: string,
-    border: shape({
-      default: string,
-      error: string,
-    }),
-  }),
-  input: shape({
-    color: shape({
-      default: string,
-    }),
-  }),
-  label: shape({
-    color: shape({
-      default: string,
-      error: string,
-    }),
-  }),
+export const restaurantDetailsType = shape({
+  id: string,
+  name: string,
+  photoUrl: string,
+  placeUrl: string,
+  priceLevel: number,
+  rating: number,
+  supportingText: string,
+  userRatingsTotal: number,
+});
+
+export const restuarantMapType = shape({
+  geometry: shape({ type: string.isRequired, coordinates: arrayOf(number) }),
+  properties: restaurantDetailsType,
+  type: string.isRequired,
 });
 
 export const refType = oneOfType([func, shape({ current: instanceOf(Element) })]);
