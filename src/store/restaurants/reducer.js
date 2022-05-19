@@ -1,6 +1,6 @@
 /* eslint-disable default-param-last */
 import {
-  ADD_FAVORITED_RESTAURANT,
+  SET_FAVORITED_RESTAURANTS,
   FETCH_FAVORITED_RESTAURANTS,
   QUERY_AREA,
   SET_FILTER_OPTION,
@@ -25,17 +25,17 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         selectedFilterOption: payload,
       };
-    case ADD_FAVORITED_RESTAURANT.PENDING:
+    case SET_FAVORITED_RESTAURANTS.PENDING:
       return {
         ...state,
         isUpdatingFavorites: true,
       };
-    case ADD_FAVORITED_RESTAURANT.ERROR:
+    case SET_FAVORITED_RESTAURANTS.ERROR:
       return {
         ...state,
         isUpdatingFavorites: false,
       };
-    case ADD_FAVORITED_RESTAURANT.SUCCESS:
+    case SET_FAVORITED_RESTAURANTS.SUCCESS:
       return {
         ...state,
         favoritedItemIds: payload,

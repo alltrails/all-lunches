@@ -11,8 +11,8 @@ export const setFilterOption = createAction(SET_FILTER_OPTION);
 export const QUERY_AREA = createAsyncTypes('restaurants/queryArea');
 export const queryArea = createAsyncAction(QUERY_AREA);
 
-export const ADD_FAVORITED_RESTAURANT = createAsyncTypes('restaurants/addFavoritedRestaurant');
-export const addFavoritedRestaurant = createAsyncAction(ADD_FAVORITED_RESTAURANT);
+export const SET_FAVORITED_RESTAURANTS = createAsyncTypes('restaurants/setFavoritedRestaurants');
+export const setFavoritedRestaurants = createAsyncAction(SET_FAVORITED_RESTAURANTS);
 
 export const FETCH_FAVORITED_RESTAURANTS = createAsyncTypes(
   'restaurants/fetchFavoritedRestaurants',

@@ -16,9 +16,12 @@ export function* queryAreaSaga({ payload: searchText }) {
   const {
     google: { maps: mapsInstance },
   } = window;
-  let restaurants;
 
   try {
+    if (!mapsInstance) throw new Error('Unable to load Google Maps API');
+
+    let restaurants;
+
     const latLng = yield create(mapsInstance.LatLng, ALL_TRAILS_HQ_LAT, ALL_TRAILS_HQ_LNG);
 
     const map = yield create(mapsInstance.Map, document.createElement('div'), {

@@ -2,28 +2,11 @@ import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { refType } from 'constants/propTypes';
-import * as Types from 'constants/filterTypes';
-
 import { useEventListener } from 'lib/customHooks';
 
-import CheckmarkIcon from 'components/svg/CheckmarkIcon';
-import FocusTrap from 'components/shared/FocusTrap';
-import {
-  ApplyButton,
-  CheckmarkIconWrapper,
-  Form,
-  ListWrapper,
-  MenuOptions,
-  OptionItem,
-  OptionItemButton,
-} from './style';
+import FilterMenu from './FilterMenu';
 
-const menuOptions = [
-  { id: Types.HIGH_TO_LOW_FILTER_OPTION, title: 'Ratings High to Low' },
-  { id: Types.LOW_TO_HIGH_FILTER_OPTION, title: 'Ratings Low to High' },
-];
-
-const FilterMenuOptions = ({
+const FilterMenuContainer = ({
   filterButtonRef,
   onClose,
   onMenuOptionClick,
@@ -42,42 +25,16 @@ const FilterMenuOptions = ({
   useEventListener('mousedown', handleMouseDown);
 
   return (
-    <FocusTrap fallbackFocus="#pop-out-menu">
-      <MenuOptions ref={menuRef} tabIndex="-1" id="pop-out-menu">
-        <Form>
-          <ListWrapper>
-            {menuOptions.map((option) => {
-              const isSelected = selectedMenuOption === option.id;
-
-              return (
-                <OptionItemButton
-                  key={option.id}
-                  onClick={() => onMenuOptionClick(option.id)}
-                  type="button"
-                >
-                  <OptionItem>
-                    <CheckmarkIconWrapper isSelected={isSelected}>
-                      <CheckmarkIcon
-                        titleText={option.title}
-                        variant={isSelected ? 'green' : 'white'}
-                      />
-                    </CheckmarkIconWrapper>
-                    {option.title}
-                  </OptionItem>
-                </OptionItemButton>
-              );
-            })}
-          </ListWrapper>
-          <ApplyButton disabled={!selectedMenuOption} onClick={onSubmit}>
-            Apply
-          </ApplyButton>
-        </Form>
-      </MenuOptions>
-    </FocusTrap>
+    <FilterMenu
+      menuRef={menuRef}
+      onMenuOptionClick={onMenuOptionClick}
+      onSubmit={onSubmit}
+      selectedMenuOption={selectedMenuOption}
+    />
   );
 };
 
-FilterMenuOptions.propTypes = {
+FilterMenuContainer.propTypes = {
   filterButtonRef: refType,
   onMenuOptionClick: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
@@ -85,9 +42,9 @@ FilterMenuOptions.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-FilterMenuOptions.defaultProps = {
+FilterMenuContainer.defaultProps = {
   filterButtonRef: null,
   selectedMenuOption: null,
 };
 
-export default FilterMenuOptions;
+export default FilterMenuContainer;

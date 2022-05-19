@@ -4,11 +4,11 @@ import { call, put, select, takeLatest } from 'redux-saga/effects';
 import { setDoc, doc, getFirestore } from 'firebase/firestore';
 
 import { userIdSelector } from 'store/user/selectors';
-import { ADD_FAVORITED_RESTAURANT, addFavoritedRestaurant } from '../actions';
+import { SET_FAVORITED_RESTAURANTS, setFavoritedRestaurants } from '../actions';
 
-const debug = Debug('all-lunches:store:map:sagas:addFavoritedRestaurant');
+const debug = Debug('all-lunches:store:map:sagas:setFavoritedRestaurants');
 
-export function* addFavoritedRestaurantSaga({ payload: favoritedIds }) {
+export function* setFavoritedRestaurantsSaga({ payload: favoritedIds }) {
   debug('Saga called', favoritedIds);
 
   try {
@@ -22,14 +22,14 @@ export function* addFavoritedRestaurantSaga({ payload: favoritedIds }) {
 
     debug('Restaurant successfully added');
 
-    yield put(addFavoritedRestaurant.success(favoritedIds));
+    yield put(setFavoritedRestaurants.success(favoritedIds));
   } catch (e) {
     debug('Saga error', e);
 
-    yield put(addFavoritedRestaurant.error(e.message));
+    yield put(setFavoritedRestaurants.error(e.message));
   }
 }
 
 export default function* () {
-  yield takeLatest(ADD_FAVORITED_RESTAURANT.PENDING, addFavoritedRestaurantSaga);
+  yield takeLatest(SET_FAVORITED_RESTAURANTS.PENDING, setFavoritedRestaurantsSaga);
 }

@@ -19,7 +19,7 @@ const SidePanel = ({
   favoritedItemIds,
   highlightedRestaurantId,
   isUpdatingFavorites,
-  onFavoritedItemChange,
+  onFavoriteItemChange,
   onMouseEnter,
   onMouseLeave,
   restaurants,
@@ -56,7 +56,7 @@ const SidePanel = ({
               userRatingsTotal={userRatingsTotal}
             />
             <FavoriteHeartWrapper>
-              <FavoriteHeartButton onClick={() => onFavoritedItemChange(id, isItemFavorited)}>
+              <FavoriteHeartButton onClick={() => onFavoriteItemChange(id, isItemFavorited)}>
                 {isUpdatingFavorites ? (
                   <LoadingSpinner />
                 ) : (
@@ -74,7 +74,7 @@ SidePanel.propTypes = {
   favoritedItemIds: PropTypes.arrayOf(PropTypes.string),
   isUpdatingFavorites: PropTypes.bool.isRequired,
   highlightedRestaurantId: PropTypes.string,
-  onFavoritedItemChange: PropTypes.func.isRequired,
+  onFavoriteItemChange: PropTypes.func.isRequired,
   onMouseEnter: PropTypes.func.isRequired,
   onMouseLeave: PropTypes.func.isRequired,
   restaurants: PropTypes.arrayOf(restaurantDetailsType),

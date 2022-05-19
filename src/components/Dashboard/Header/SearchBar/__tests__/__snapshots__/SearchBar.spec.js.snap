@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchBar renders the expected view 1`] = `
+<style__Form
+  onSubmit={[Function]}
+>
+  <style__TextInput
+    onChange={[Function]}
+    placeholder="Search for a restaurant"
+    type="text"
+    value=""
+  />
+  <style__Button
+    disabled={false}
+    isLoading={false}
+    onClick={[Function]}
+  >
+    <style__MagnifyingGlassImg
+      alt="Search here"
+      src="test-file-stub"
+    />
+  </style__Button>
+</style__Form>
+`;
+
+exports[`SearchBar renders the expected view when loading 1`] = `
+<style__Form
+  onSubmit={[Function]}
+>
+  <style__TextInput
+    onChange={[Function]}
+    placeholder="Search for a restaurant"
+    type="text"
+    value=""
+  />
+  <style__Button
+    disabled={true}
+    isLoading={true}
+    onClick={[Function]}
+  >
+    <style__LoadingWrapper>
+      <LoadingSpinner
+        color="#428813"
+      />
+    </style__LoadingWrapper>
+  </style__Button>
+</style__Form>
+`;
+
+exports[`SearchBar renders the expected view when search input has input 1`] = `
+<style__Form
+  onSubmit={[Function]}
+>
+  <style__TextInput
+    onChange={[Function]}
+    placeholder="Search for a restaurant"
+    type="text"
+    value="coffee"
+  />
+  <style__Button
+    disabled={false}
+    isLoading={false}
+    onClick={[Function]}
+  >
+    <style__MagnifyingGlassImg
+      alt="Search here"
+      src="test-file-stub"
+    />
+  </style__Button>
+</style__Form>
+`;

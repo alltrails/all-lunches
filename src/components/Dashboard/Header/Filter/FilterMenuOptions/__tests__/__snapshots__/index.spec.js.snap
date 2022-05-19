@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilterMenuContainer renders the expected view 1`] = `
+<FilterMenu
+  menuRef={
+    Object {
+      "current": undefined,
+    }
+  }
+  onMenuOptionClick={[Function]}
+  onSubmit={[Function]}
+  selectedMenuOption={null}
+/>
+`;
+
+exports[`FilterMenuContainer renders the expected view with a selected menu option 1`] = `
+<FilterMenu
+  menuRef={
+    Object {
+      "current": undefined,
+    }
+  }
+  onMenuOptionClick={[Function]}
+  onSubmit={[Function]}
+  selectedMenuOption="high-to-low"
+/>
+`;

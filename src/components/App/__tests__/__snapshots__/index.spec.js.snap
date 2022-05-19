@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App renders the expected view 1`] = `<Dashboard />`;
+
+exports[`App renders the expected view when loading 1`] = `
+<style__LoadingWrapper>
+  <style__LoadingTitle>
+    Loading
+  </style__LoadingTitle>
+  <LoadingSpinner
+    color="#428813"
+  />
+</style__LoadingWrapper>
+`;
+
+exports[`App renders the expected view when there is an error 1`] = `
+<ErrorView
+  hasBackground={true}
+  text="looks like there was an error"
+/>
+`;

@@ -66,6 +66,7 @@
     "@storybook/react": "^6.4.19",
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.1.0",
+    "babel-jest": "^28.1.0",
     "babel-loader": "^8.2.3",
     "babel-plugin-module-resolver": "^4.1.0",
     "babel-plugin-styled-components": "^1.13.3",
@@ -73,6 +74,7 @@
     "css-loader": "^6.5.1",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.6",
+    "enzyme-to-json": "^3.6.2",
     "eslint": "^8.11.0",
     "eslint-config-airbnb": "^19.0.0",
     "eslint-config-prettier": "^8.5.0",
@@ -87,6 +89,8 @@
     "eslint-plugin-storybook": "^0.5.7",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
+    "jest": "^28.1.0",
+    "jest-environment-jsdom": "^28.1.0",
     "jest-react-hooks-shallow": "^1.5.1",
     "prettier": "^2.6.0",
     "style-loader": "^3.3.1",
@@ -100,13 +104,15 @@
   "jest": {
     "moduleNameMapper": {
       "\\.(css)$": "<rootDir>/src/__mocks__/styles.mock.js",
-      "^config$": "<rootDir>/config/dev.js"
+      "^config$": "<rootDir>/config/dev.js",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/__mocks__/file.mock.js"
     },
     "setupFilesAfterEnv": [
       "./jestSetup.js"
     ],
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
-    ]
+    ],
+    "testEnvironment": "jsdom"
   }
 }

@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilterMenu renders the expected view 1`] = `
+<FocusTrap
+  clickOutsideDeactivates={true}
+  fallbackFocus="#pop-out-menu"
+>
+  <style__Options
+    id="pop-out-menu"
+    tabIndex="-1"
+  >
+    <style__Form>
+      <style__ListWrapper>
+        <style__OptionItemButton
+          key="high-to-low"
+          onClick={[Function]}
+          type="button"
+        >
+          <style__OptionItem>
+            <style__CheckmarkIconWrapper
+              isSelected={false}
+            >
+              <CheckmarkIcon
+                titleText="Ratings High to Low"
+                variant="white"
+              />
+            </style__CheckmarkIconWrapper>
+            Ratings High to Low
+          </style__OptionItem>
+        </style__OptionItemButton>
+        <style__OptionItemButton
+          key="low-to-high"
+          onClick={[Function]}
+          type="button"
+        >
+          <style__OptionItem>
+            <style__CheckmarkIconWrapper
+              isSelected={false}
+            >
+              <CheckmarkIcon
+                titleText="Ratings Low to High"
+                variant="white"
+              />
+            </style__CheckmarkIconWrapper>
+            Ratings Low to High
+          </style__OptionItem>
+        </style__OptionItemButton>
+      </style__ListWrapper>
+      <style__ApplyButton
+        disabled={true}
+        onClick={[Function]}
+      >
+        Apply
+      </style__ApplyButton>
+    </style__Form>
+  </style__Options>
+</FocusTrap>
+`;
+
+exports[`FilterMenu renders the expected view when menu option is selected 1`] = `
+<FocusTrap
+  clickOutsideDeactivates={true}
+  fallbackFocus="#pop-out-menu"
+>
+  <style__Options
+    id="pop-out-menu"
+    tabIndex="-1"
+  >
+    <style__Form>
+      <style__ListWrapper>
+        <style__OptionItemButton
+          key="high-to-low"
+          onClick={[Function]}
+          type="button"
+        >
+          <style__OptionItem>
+            <style__CheckmarkIconWrapper
+              isSelected={false}
+            >
+              <CheckmarkIcon
+                titleText="Ratings High to Low"
+                variant="white"
+              />
+            </style__CheckmarkIconWrapper>
+            Ratings High to Low
+          </style__OptionItem>
+        </style__OptionItemButton>
+        <style__OptionItemButton
+          key="low-to-high"
+          onClick={[Function]}
+          type="button"
+        >
+          <style__OptionItem>
+            <style__CheckmarkIconWrapper
+              isSelected={true}
+            >
+              <CheckmarkIcon
+                titleText="Ratings Low to High"
+                variant="green"
+              />
+            </style__CheckmarkIconWrapper>
+            Ratings Low to High
+          </style__OptionItem>
+        </style__OptionItemButton>
+      </style__ListWrapper>
+      <style__ApplyButton
+        disabled={false}
+        onClick={[Function]}
+      >
+        Apply
+      </style__ApplyButton>
+    </style__Form>
+  </style__Options>
+</FocusTrap>
+`;

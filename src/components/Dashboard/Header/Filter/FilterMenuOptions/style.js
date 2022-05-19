@@ -34,7 +34,7 @@ export const Form = styled.form`
   width: 100%;
 `;
 
-export const MenuOptions = styled.div`
+export const Options = styled.div`
   background: white;
   border-radius: 10px;
   border: 1px solid ${colors.borderGray};
