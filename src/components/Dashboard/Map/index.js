@@ -81,7 +81,7 @@ const Map = ({ restaurants, setSelectedRestaurantId, highlightedRestaurant }) =>
   }, [restaurants]);
 
   useEffect(() => {
-    if (highlightedRestaurant && highlightedRestaurant[0]) {
+    if (mapContainer && highlightedRestaurant && highlightedRestaurant[0]) {
       const features = getMarkerItemFeatures(highlightedRestaurant, mapContainer);
 
       if (features.length > 0) {

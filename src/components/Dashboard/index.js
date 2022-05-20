@@ -1,53 +1,39 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import { useEventListener } from 'lib/customHooks';
 import debounce from 'lib/debounce';
 import { widthSizes } from 'styles/media';
 
-import Header from 'components/Dashboard/Header';
-import SidePanel from 'components/Dashboard/SidePanel';
-import MobileButton from 'components/shared/MobileViewButton';
+import { isTouchScreenSelector } from 'store/userAgent/selectors';
 
-import { MapWrapper, HeaderWrapper, LayoutWrapper, SidePanelWrapper } from './style';
+import MobileLayout from 'components/shared/Layout/Mobile';
+import DefaultLayout from 'components/shared/Layout/Default';
 
-import Map from './Map';
+import { LayoutWrapper } from './style';
 
-const Dashboard = () => {
-  const [isMapViewEnabled, setIsMapViewEnabled] = useState(true);
-  const [isMobileView, setIsMobileView] = useState(false);
+const mapStateToProps = (state) => ({
+  isTouchScreen: isTouchScreenSelector(state),
+});
+
+export const Dashboard = ({ isTouchScreen }) => {
+  const [isMobileView, setIsMobileView] = useState(isTouchScreen);
 
   const handleMobileViewObserver = () => {
-    if (window.innerWidth < widthSizes.tablet) {
-      setIsMobileView(true);
-      setIsMapViewEnabled(true);
-    } else if (window.innerWidth > widthSizes.tablet) {
-      setIsMobileView(false);
-    }
+    if (window.innerWidth < widthSizes.tablet) setIsMobileView(true);
+    else if (window.innerWidth > widthSizes.tablet) setIsMobileView(false);
   };
 
   useEffect(() => handleMobileViewObserver(), []);
 
-  useEventListener('resize', debounce(handleMobileViewObserver), 150);
+  useEventListener('resize', debounce(handleMobileViewObserver, 250));
 
-  return (
-    <LayoutWrapper>
-      <HeaderWrapper>
-        <Header />
-      </HeaderWrapper>
-      <SidePanelWrapper isVisible={!isMapViewEnabled} isMobileView={isMobileView}>
-        <SidePanel />
-      </SidePanelWrapper>
-      <MapWrapper isVisible={isMapViewEnabled} isMobileView={isMobileView}>
-        <Map />
-      </MapWrapper>
-      {isMobileView && (
-        <MobileButton
-          isMapViewEnabled={isMapViewEnabled}
-          onClick={() => setIsMapViewEnabled((isMapEnabled) => !isMapEnabled)}
-        />
-      )}
-    </LayoutWrapper>
-  );
+  return <LayoutWrapper>{isMobileView ? <MobileLayout /> : <DefaultLayout />}</LayoutWrapper>;
 };
 
-export default Dashboard;
+Dashboard.propTypes = {
+  isTouchScreen: PropTypes.bool.isRequired,
+};
+
+export default connect(mapStateToProps)(Dashboard);

@@ -7,8 +7,8 @@ import ListIcon from 'assets/list-icon.svg';
 import { Icon, Button } from './style';
 
 const MobileViewButton = ({ isMapViewEnabled, onClick }) => {
-  const buttonText = isMapViewEnabled ? 'Map' : 'List';
-  const icon = isMapViewEnabled ? MapIcon : ListIcon;
+  const buttonText = isMapViewEnabled ? 'List' : 'Map';
+  const icon = isMapViewEnabled ? ListIcon : MapIcon;
 
   return (
     <Button onClick={onClick}>

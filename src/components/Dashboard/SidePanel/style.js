@@ -1,12 +1,14 @@
 import styled from 'styled-components';
-import { colors } from 'styles';
+import { media, colors } from 'styles';
 import TransparentButton from 'styles/components/TransparentButton';
 
 export const PanelWrapper = styled.div`
   background: ${colors.whiteBackground};
-  padding: 60px 14px 0;
+  padding: 110px 14px 0;
   overflow-y: auto;
   height: 100vh;
+
+  ${media.min.tablet`padding: 60px 14px 0;`}
 `;
 
 export const CardList = styled.ul`

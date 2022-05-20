@@ -16,10 +16,17 @@ export const HeaderWrapper = styled.div`
   width: 100%;
 `;
 
-export const SidePanelWrapper = styled.nav`
+export const SidePanelWrapper = styled.div`
   ${(p) =>
     p.isMobileView
-      ? `${p.isVisible ? 'flex: 0 0 100%;' : 'display: none;'}`
+      ? `${
+          p.isVisible
+            ? 'flex: 0 0 100%;'
+            : `
+              visibility: hidden;
+              display: none;
+            `
+        }`
       : css`
           ${media.min.tablet`flex: 0 0 35%;`}
         `}
