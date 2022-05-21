@@ -31,21 +31,21 @@ export const addMapControls = (mapContainer, mapboxgl) => {
   );
 };
 
-const setMarkerInactive = (hoveredId, mapContainer) => {
+const setMarkerInactive = (prevHoveredId, mapContainer) => {
   mapContainer.getCanvas().style.cursor = '';
   mapContainer.setLayoutProperty('restaurants-layer', 'icon-image', [
     'match',
     ['get', 'id'],
-    hoveredId,
+    prevHoveredId,
     'default-pin',
     'default-pin',
   ]);
 
-  hoveredId = null;
+  prevHoveredId = null;
 };
 
 export const setMarkerActive = (
-  { coordinates, properties, prevHoveredId },
+  { coordinates, id, properties, prevHoveredId },
   mapContainer,
   popUpRef,
 ) => {
@@ -55,26 +55,26 @@ export const setMarkerActive = (
   if (popUps.length) popUps[0].remove();
 
   mapContainer.getCanvas().style.cursor = 'pointer';
-  mapContainer.flyTo({ center: coordinates, speed: 0.1 });
+  mapContainer.flyTo({ center: coordinates, zoom: 14, speed: 0.7 });
 
   const coordinatesSliced = coordinates.slice();
   mapContainer.setLayoutProperty('restaurants-layer', 'icon-image', [
     'match',
     ['get', 'id'],
-    properties.id,
+    id,
     'active-pin',
     'default-pin',
   ]);
 
   generatePopUp({ properties, coordinates: coordinatesSliced }, mapContainer, popUpRef);
-  prevHoveredId = properties.id;
+  prevHoveredId = id;
 };
 
 export const getMarkerItemFeatures = (marker, mapContainer) => {
   const { coordinates } = marker[0];
   const point = mapContainer.project(coordinates);
 
-  return mapContainer.queryRenderedFeatures(point);
+  return mapContainer.queryRenderedFeatures(point, { layers: ['restaurants-layer'] });
 };
 
 export const setSourceLayer = (mapContainer, mapFeatures) => {

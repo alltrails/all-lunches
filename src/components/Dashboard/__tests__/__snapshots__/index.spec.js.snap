@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dashboard renders the expected view 1`] = `
+<style__LayoutWrapper>
+  <Default />
+</style__LayoutWrapper>
+`;
+
+exports[`Dashboard renders the expected view when a touch screen 1`] = `
+<style__LayoutWrapper>
+  <Mobile />
+</style__LayoutWrapper>
+`;

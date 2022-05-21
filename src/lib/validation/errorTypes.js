@@ -1,4 +1,0 @@
-export const EMPTY_FIELD = 'EMPTY_FIELD';
-export const INVALID_CODE = 'INVALID_CODE';
-export const INVALID_EMAIL = 'INVALID_EMAIL';
-export const INVALID_PHONE_NUMBER = 'INVALID_PHONE_NUMBER';

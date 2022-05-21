@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App reducer INITIALIZE_APPLICATION.ERROR works as expected 1`] = `
+Object {
+  "error": "looks like there was an error",
+  "isLoading": false,
+}
+`;
+
+exports[`App reducer INITIALIZE_APPLICATION.PENDING works as expected 1`] = `
+Object {
+  "error": null,
+  "isLoading": true,
+}
+`;
+
+exports[`App reducer INITIALIZE_APPLICATION.SUCCESS works as expected 1`] = `
+Object {
+  "error": null,
+  "isLoading": false,
+}
+`;
+
+exports[`App reducer returns the initial state 1`] = `
+Object {
+  "error": null,
+  "isLoading": false,
+}
+`;

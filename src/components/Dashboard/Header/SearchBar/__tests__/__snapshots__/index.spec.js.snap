@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchBarContainer renders the expected view 1`] = `
+<SearchBar
+  isLoading={false}
+  onChange={[Function]}
+  onSubmit={[Function]}
+  searchText=""
+/>
+`;
+
+exports[`SearchBarContainer renders the expected view when loading 1`] = `
+<SearchBar
+  isLoading={true}
+  onChange={[Function]}
+  onSubmit={[Function]}
+  searchText=""
+/>
+`;

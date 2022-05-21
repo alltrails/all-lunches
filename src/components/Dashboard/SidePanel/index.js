@@ -7,68 +7,71 @@ import debounce from 'lib/debounce';
 
 import * as restaurantsActions from 'store/restaurants/actions';
 import {
-  restaurantsFilteredListSelector,
+  favoritedItemIdsSelector,
   highlightedRestaurantIdSelector,
+  restaurantsFilteredListSelector,
+  isUpdatingFavoritesSelector,
 } from 'store/restaurants/selectors';
 
 import SidePanel from './SidePanel';
 
 const mapStateToProps = (state) => ({
-  favoritedItemIds: highlightedRestaurantIdSelector(state),
-  restaurants: restaurantsFilteredListSelector(state),
+  favoritedItemIds: favoritedItemIdsSelector(state),
   highlightedRestaurantId: highlightedRestaurantIdSelector(state),
+  isUpdatingFavorites: isUpdatingFavoritesSelector(state),
+  restaurants: restaurantsFilteredListSelector(state),
 });
 
 const mapDispatchToProps = {
-  setFavoritedItems: restaurantsActions.setSelectedItemId,
-  setSelectedItemId: restaurantsActions.setSelectedItemId,
+  setFavoritedRestaurants: restaurantsActions.setFavoritedRestaurants,
+  setSelectedRestaurantId: restaurantsActions.setSelectedRestaurantId,
 };
 
-const SidePanelContainer = ({
+export const SidePanelContainer = ({
+  setFavoritedRestaurants,
   favoritedItemIds,
-  restaurants,
   highlightedRestaurantId,
-  setFavoritedItemIds,
-  setSelectedItemId,
+  isUpdatingFavorites,
+  restaurants,
+  setSelectedRestaurantId,
 }) => {
-  const handleFavoritedItemChange = (itemId, isSelected) => {
-    let nextResponse = favoritedItemIds || [];
+  const handleFavoriteItemChange = (itemId, isSelected) => {
+    let favoritedIds = favoritedItemIds;
 
-    if (!isSelected) nextResponse = [...nextResponse, itemId];
-    else nextResponse = nextResponse.filter((option) => option !== itemId);
+    if (!isSelected) favoritedIds = [...favoritedIds, itemId];
+    else favoritedIds = favoritedIds.filter((optionId) => optionId !== itemId);
 
-    setFavoritedItemIds(nextResponse);
+    setFavoritedRestaurants(favoritedIds);
   };
 
   const handleMouseEnter = (itemId) => {
-    debounce(setSelectedItemId(itemId), 500);
+    debounce(setSelectedRestaurantId(itemId), 250);
   };
 
   const handleMouseLeave = () => {
-    setSelectedItemId(null);
+    setSelectedRestaurantId(null);
   };
-
-  console.log('restaurants', restaurants);
 
   return (
     <SidePanel
       favoritedItemIds={favoritedItemIds}
-      onFavoritedItemChange={handleFavoritedItemChange}
-      onFavoriteItem={() => {}}
+      highlightedRestaurantId={highlightedRestaurantId}
+      isUpdatingFavorites={isUpdatingFavorites}
+      onFavoriteItemChange={handleFavoriteItemChange}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       restaurants={restaurants}
-      highlightedRestaurantId={highlightedRestaurantId}
     />
   );
 };
 
 SidePanelContainer.propTypes = {
   favoritedItemIds: PropTypes.arrayOf(PropTypes.string),
-  restaurants: PropTypes.arrayOf(restaurantDetailsType),
+  setFavoritedRestaurants: PropTypes.func.isRequired,
   highlightedRestaurantId: PropTypes.string,
-  setFavoritedItemIds: PropTypes.func.isRequired,
-  setSelectedItemId: PropTypes.func.isRequired,
+  isUpdatingFavorites: PropTypes.bool.isRequired,
+  restaurants: PropTypes.arrayOf(restaurantDetailsType),
+  setSelectedRestaurantId: PropTypes.func.isRequired,
 };
 
 SidePanelContainer.defaultProps = {

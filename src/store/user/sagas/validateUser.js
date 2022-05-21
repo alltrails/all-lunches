@@ -3,6 +3,8 @@ import Debug from 'debug';
 import { call, put, takeLatest } from 'redux-saga/effects';
 import Config from 'config'; // eslint-disable-line
 
+import awaitAsyncAction from 'lib/awaitAsyncAction';
+
 import {
   getAuth,
   signInAnonymously,
@@ -12,6 +14,7 @@ import {
 } from 'firebase/auth';
 import { initializeAppCheck, ReCaptchaV3Provider } from 'firebase/app-check';
 
+import { fetchFavoritedRestaurants, FETCH_FAVORITED_RESTAURANTS } from 'store/restaurants/actions';
 import { VALIDATE_USER, validateUser } from '../actions';
 
 const debug = Debug('all-lunches:store:user:sagas:validateUser');
@@ -21,7 +24,7 @@ const handleAuthChangeState = (auth) =>
     onAuthStateChanged(auth, (user) => {
       debug('User', user);
 
-      if (user && !user.isAnonymous && !user.stsTokenManager.isExpired) resolve(user);
+      if (user && !user.stsTokenManager.isExpired) resolve(user);
       else resolve(null);
     });
   });
@@ -41,18 +44,21 @@ export function* validateUserSaga({ payload: app }) {
     debug('App check passed');
 
     const auth = yield call(getAuth);
-    const user = yield call(handleAuthChangeState, auth);
+    let user = yield call(handleAuthChangeState, auth);
 
     if (user) {
-      debug('Fetching existing user', user);
-      // fetch credentials like name and other data
-      // set persistence to browserLocalPersistence
-      // user = this.data();
+      yield put(fetchFavoritedRestaurants(user.uid));
+      const [, errorAction] = yield call(awaitAsyncAction, FETCH_FAVORITED_RESTAURANTS);
+
+      if (errorAction) {
+        const { payload: error } = errorAction;
+        if (error) throw error;
+      }
     } else {
       yield call(setPersistence, auth, browserLocalPersistence);
-      yield call(signInAnonymously, auth);
+      ({ user } = yield call(signInAnonymously, auth));
 
-      debug('Logged in anonymously');
+      debug('Logged in anonymously', user);
     }
 
     yield put(validateUser.success(user));

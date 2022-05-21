@@ -5,16 +5,24 @@ import { restaurantDetailsType } from 'constants/propTypes';
 
 import RestaurantDetails from 'components/shared/RestaurantDetails';
 import HeartIcon from 'components/svg/HeartIcon';
+import LoadingSpinner from 'components/shared/LoadingSpinner';
 
-import { FavoriteHeartButton, CardItem, CardList, PanelWrapper } from './style';
+import {
+  FavoriteHeartWrapper,
+  FavoriteHeartButton,
+  CardItem,
+  CardList,
+  PanelWrapper,
+} from './style';
 
 const SidePanel = ({
-  favoritedItems,
-  onFavoriteItem,
+  favoritedItemIds,
+  highlightedRestaurantId,
+  isUpdatingFavorites,
+  onFavoriteItemChange,
   onMouseEnter,
   onMouseLeave,
   restaurants,
-  highlightedRestaurantId,
 }) => (
   <PanelWrapper>
     <CardList>
@@ -30,7 +38,7 @@ const SidePanel = ({
           userRatingsTotal,
         } = restaurant;
 
-        const isItemFavorited = favoritedItems.includes(id);
+        const isItemFavorited = favoritedItemIds.includes(id);
         return (
           <CardItem
             key={id}
@@ -47,9 +55,15 @@ const SidePanel = ({
               supportingText={supportingText}
               userRatingsTotal={userRatingsTotal}
             />
-            <FavoriteHeartButton onClick={() => onFavoriteItem(id, isItemFavorited)}>
-              <HeartIcon variant={isItemFavorited ? 'green' : 'gray'} />
-            </FavoriteHeartButton>
+            <FavoriteHeartWrapper>
+              <FavoriteHeartButton onClick={() => onFavoriteItemChange(id, isItemFavorited)}>
+                {isUpdatingFavorites ? (
+                  <LoadingSpinner />
+                ) : (
+                  <HeartIcon variant={isItemFavorited ? 'green' : 'gray'} />
+                )}
+              </FavoriteHeartButton>
+            </FavoriteHeartWrapper>
           </CardItem>
         );
       })}
@@ -57,18 +71,19 @@ const SidePanel = ({
   </PanelWrapper>
 );
 SidePanel.propTypes = {
-  onFavoriteItem: PropTypes.func.isRequired,
+  favoritedItemIds: PropTypes.arrayOf(PropTypes.string),
+  isUpdatingFavorites: PropTypes.bool.isRequired,
+  highlightedRestaurantId: PropTypes.string,
+  onFavoriteItemChange: PropTypes.func.isRequired,
   onMouseEnter: PropTypes.func.isRequired,
   onMouseLeave: PropTypes.func.isRequired,
   restaurants: PropTypes.arrayOf(restaurantDetailsType),
-  highlightedRestaurantId: PropTypes.string,
-  favoritedItems: PropTypes.arrayOf(PropTypes.string),
 };
 
 SidePanel.defaultProps = {
   highlightedRestaurantId: null,
   restaurants: null,
-  favoritedItems: [],
+  favoritedItemIds: [],
 };
 
 export default SidePanel;

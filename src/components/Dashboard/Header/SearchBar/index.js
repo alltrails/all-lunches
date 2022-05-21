@@ -15,7 +15,7 @@ const mapDispatchToProps = {
   queryArea: restaurantsActions.queryArea,
 };
 
-const SearchBarContainer = ({ isLoading, queryArea }) => {
+export const SearchBarContainer = ({ isLoading, queryArea }) => {
   const [searchText, setSearchText] = useState('');
 
   const handleChange = (event) => {
@@ -25,7 +25,9 @@ const SearchBarContainer = ({ isLoading, queryArea }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (searchText.trim()) queryArea(searchText);
+    const searchTextTrimmed = searchText.trim();
+
+    if (searchTextTrimmed) queryArea(searchTextTrimmed);
   };
 
   return (

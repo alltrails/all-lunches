@@ -1,16 +1,5 @@
 import styled from 'styled-components';
 
-export const LayoutWrapper = styled.div`
-  background-color: #f3f7f9;
-  display: flex;
-  min-height: 100vh;
-  overflow-y: none;
-`;
-
-export const SidePanelWrapper = styled.nav`
-  flex: 0 0 35%;
-`;
-
 export const HeaderWrapper = styled.div`
   position: absolute;
   top: 0;
@@ -19,7 +8,15 @@ export const HeaderWrapper = styled.div`
   width: 100%;
 `;
 
-export const ContentWrapper = styled.div`
-  width: 100%;
+export const SidePanelWrapper = styled.div`
+  flex: 0 0 35%;
+`;
+
+export const SidePanelMobileWrapper = styled.div`
+  flex: 0 0 100%;
+`;
+
+export const MapWrapper = styled.div`
   height: 100vh;
+  width: 100%;
 `;

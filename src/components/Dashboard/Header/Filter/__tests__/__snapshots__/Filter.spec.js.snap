@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Filter renders the expected view 1`] = `
+<style__Wrapper>
+  <style__FilterMenuButton
+    isMenuOpen={false}
+    onClick={[Function]}
+  >
+    Filter
+  </style__FilterMenuButton>
+</style__Wrapper>
+`;
+
+exports[`Filter renders the expected view when menu is open 1`] = `
+<style__Wrapper>
+  <style__FilterMenuButton
+    isMenuOpen={true}
+    onClick={[Function]}
+  >
+    Sort
+  </style__FilterMenuButton>
+  <FilterMenuContainer
+    filterButtonRef={
+      Object {
+        "current": null,
+      }
+    }
+    onClose={[Function]}
+    onMenuOptionClick={[Function]}
+    onSubmit={[Function]}
+    selectedMenuOption={null}
+  />
+</style__Wrapper>
+`;
+
+exports[`Filter renders the expected view when menu is open and option is selected 1`] = `
+<style__Wrapper>
+  <style__FilterMenuButton
+    isMenuOpen={true}
+    onClick={[Function]}
+  >
+    Sort
+  </style__FilterMenuButton>
+  <FilterMenuContainer
+    filterButtonRef={
+      Object {
+        "current": null,
+      }
+    }
+    onClose={[Function]}
+    onMenuOptionClick={[Function]}
+    onSubmit={[Function]}
+    selectedMenuOption="low-to-high"
+  />
+</style__Wrapper>
+`;

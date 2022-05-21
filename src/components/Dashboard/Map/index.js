@@ -16,26 +16,23 @@ import {
 } from 'lib/mapUtils';
 
 import * as mapActions from 'store/restaurants/actions';
-import {
-  restaurantsMapSelector,
-  highlightedRestaurantMapSelector,
-} from 'store/restaurants/selectors';
+import { restaurantsMapSelector, highlightedRestaurantSelector } from 'store/restaurants/selectors';
 
 import { MapWrapper } from './style';
 
 const mapStateToProps = (state) => ({
   restaurants: restaurantsMapSelector(state),
-  selectedMapItem: highlightedRestaurantMapSelector(state),
+  highlightedRestaurant: highlightedRestaurantSelector(state),
 });
 
 const mapDispatchToProps = {
-  setSelectedItemId: mapActions.setSelectedItemId,
+  setSelectedRestaurantId: mapActions.setSelectedRestaurantId,
 };
 
 mapboxgl.accessToken =
   'pk.eyJ1Ijoic2F1ZXJhcHBsZSIsImEiOiJja3VlcHJtd2UxbW9wMnFvOGtzbXEyNHgwIn0.mJ6PjDnMxeZinsKiSs_o6A';
 
-const Map = ({ restaurants, setSelectedItemId, selectedMapItem }) => {
+const Map = ({ restaurants, setSelectedRestaurantId, highlightedRestaurant }) => {
   const mapRef = useRef(null);
   const popUpRef = useRef(
     new mapboxgl.Popup({ maxWidth: '400px', closeButton: false, offset: 15 }),
@@ -64,8 +61,12 @@ const Map = ({ restaurants, setSelectedItemId, selectedMapItem }) => {
           properties,
         } = features[0];
 
-        setMarkerActive({ coordinates, properties, prevHoveredId }, map, popUpRef);
-        setSelectedItemId(features[0].properties.id);
+        setMarkerActive(
+          { coordinates, id: properties.id, properties, prevHoveredId },
+          map,
+          popUpRef,
+        );
+        setSelectedRestaurantId(features[0].properties.id);
       }
     });
 
@@ -80,30 +81,33 @@ const Map = ({ restaurants, setSelectedItemId, selectedMapItem }) => {
   }, [restaurants]);
 
   useEffect(() => {
-    if (selectedMapItem && selectedMapItem[0]) {
-      const features = getMarkerItemFeatures(selectedMapItem, mapContainer);
+    if (mapContainer && highlightedRestaurant && highlightedRestaurant[0]) {
+      const features = getMarkerItemFeatures(highlightedRestaurant, mapContainer);
 
       if (features.length > 0) {
-        const { coordinates } = selectedMapItem[0];
-        const { properties } = features[0];
+        const { coordinates, id } = highlightedRestaurant[0];
+        const restaurantFeatures = features.filter((feature) => feature.properties?.id === id);
 
-        setMarkerActive({ coordinates, properties, prevHoveredId }, mapContainer, popUpRef);
+        if (restaurantFeatures.length) {
+          const { properties } = restaurantFeatures[0];
+          setMarkerActive({ coordinates, id, properties, prevHoveredId }, mapContainer, popUpRef);
+        }
       }
     }
-  }, [selectedMapItem]);
+  }, [highlightedRestaurant]);
 
   return <MapWrapper ref={mapRef} />;
 };
 
 Map.propTypes = {
   restaurants: PropTypes.arrayOf(restuarantMapType),
-  setSelectedItemId: PropTypes.func.isRequired,
-  selectedMapItem: PropTypes.arrayOf(restaurantDetailsType),
+  setSelectedRestaurantId: PropTypes.func.isRequired,
+  highlightedRestaurant: PropTypes.arrayOf(restaurantDetailsType),
 };
 
 Map.defaultProps = {
   restaurants: null,
-  selectedMapItem: null,
+  highlightedRestaurant: null,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Map);

@@ -22,7 +22,7 @@ const debug = Debug('all-lunches:store:app:sagas:sessionManager');
 
 function* setUserAgentAction() {
   const userAgent = UAParser();
-  yield put(setUserAgent({ userAgent }));
+  yield put(setUserAgent(userAgent));
 }
 
 function* enableOfflinePersistence(app) {

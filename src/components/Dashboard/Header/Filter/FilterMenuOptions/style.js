@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import TransparentButton from 'styles/components/TransparentButton';
-import { colors, type } from 'styles';
+import { media, colors, type } from 'styles';
 
 export const CheckmarkIconWrapper = styled.div`
   flex-shrink: 0;
@@ -34,16 +34,21 @@ export const Form = styled.form`
   width: 100%;
 `;
 
-export const MenuOptions = styled.div`
+export const Options = styled.div`
   background: white;
   border-radius: 10px;
   border: 1px solid ${colors.borderGray};
   box-shadow: 0 1px 3px rgb(0 0 0 / 20%), 0 1px 2px rgb(0 0 0 / 20%);
   padding: 12px;
   position: absolute;
-  right: 13px;
+  left: 0;
   top: 39px;
   width: 200px;
+
+  ${media.min.tablet`
+    right: 13px;
+    left: auto;
+  `}
 `;
 
 export const ListWrapper = styled.ol`

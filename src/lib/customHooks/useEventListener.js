@@ -14,14 +14,14 @@ const useEventListener = (eventName, handler) => {
 
   useEffect(() => {
     // Create event listener that calls handler function stored in ref
-    const eventListener = event => savedHandler.current(event);
+    const eventListener = (event) => savedHandler.current(event);
 
     // Add event listener
-    window.addEventListener(eventName, eventListener);
+    window.addEventListener(eventName, eventListener, { passive: true });
 
     // Remove event listener on cleanup
     return () => {
-      window.removeEventListener(eventName, eventListener);
+      window.removeEventListener(eventName, eventListener, { passive: true });
     };
   }, []);
 };
