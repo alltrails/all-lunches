@@ -20,7 +20,7 @@ describe('Saga: sessionManager', () => {
     userAgent: UAParser(),
   });
 
-  describe.only('Functions as expected', () => {
+  describe('Functions as expected', () => {
     const generator = sessionManager();
     const app = {};
 
@@ -52,7 +52,7 @@ describe('Saga: sessionManager', () => {
     });
   });
 
-  describe('Invalid user error', () => {
+  describe('Functions as expected when validating user errors', () => {
     const generator = sessionManager();
     const app = {};
 
@@ -70,23 +70,21 @@ describe('Saga: sessionManager', () => {
     });
 
     it('initializes firebase and offline persistence', () => {
-      expect(generator.next().value).toEqual(call(initializeApp, Config.firebaseConfig));
-      expect(generator.next(app).value).toEqual(call(enableIndexedDbPersistence, {}));
+      expect(generator.next().value).toEqual(call(initializeFirebase));
+      expect(generator.next(app).value).toEqual(call(enableOfflinePersistence, app, {}));
     });
 
     it('dispatches the error action validating user', () => {
       expect(generator.next().value).toEqual(put(validateUser(app)));
       expect(generator.next().value).toEqual(call(awaitAsyncAction, VALIDATE_USER));
       expect(generator.next([undefined, errorAction]).value).toEqual(
-        put(initializeApp.error(error)),
+        put(initializeApplication.error(error)),
       );
       expect(generator.next().done).toBe(true);
     });
-
-    it('dispatches the error action', () => {});
   });
 
-  describe('Invalid query restaurants error', () => {
+  describe('Functions as expected when querying an area for restaurants errors', () => {
     const generator = sessionManager();
     const app = {
       getProvider: () => {},
@@ -106,8 +104,8 @@ describe('Saga: sessionManager', () => {
     });
 
     it('initializes firebase and offline persistence', () => {
-      expect(generator.next().value).toEqual(call(initializeApp, Config.firebaseConfig));
-      expect(generator.next(app).value).toEqual(call(enableIndexedDbPersistence, {}));
+      expect(generator.next().value).toEqual(call(initializeFirebase));
+      expect(generator.next(app).value).toEqual(call(enableOfflinePersistence, app, {}));
     });
 
     it('validates user', () => {
@@ -116,11 +114,11 @@ describe('Saga: sessionManager', () => {
     });
 
     it('dispatches the error action querying restaurants', () => {
-      expect(generator.next().value).toEqual(put(validateUser(app)));
-      expect(generator.next().value).toEqual(call(awaitAsyncAction, VALIDATE_USER));
+      expect(generator.next([undefined, undefined]).value).toEqual(put(queryArea()));
+      expect(generator.next().value).toEqual(call(awaitAsyncAction, QUERY_AREA));
 
       expect(generator.next([undefined, errorAction]).value).toEqual(
-        put(initializeApp.error(error)),
+        put(initializeApplication.error(error)),
       );
       expect(generator.next().done).toBe(true);
     });
