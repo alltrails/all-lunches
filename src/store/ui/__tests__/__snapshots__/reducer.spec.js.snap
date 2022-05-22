@@ -51,7 +51,7 @@ Object {
 exports[`UI reducer UPDATE_FAVORITED_RESTAURANTS.SUCCESS works as expected 1`] = `
 Object {
   "currentOpenToast": Object {
-    "message": "Successfully added your favorite restaurant!",
+    "message": "Successfully updated your restaurants!",
     "type": "success",
   },
 }

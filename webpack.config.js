@@ -16,7 +16,7 @@ const webpackConfig = {
   module: {
     rules: [
       {
-        test: /\.js?$/,
+        test: /\.(ts|js)x?$/,
         include: [path.resolve(__dirname, 'src')],
         use: {
           loader: 'babel-loader',
@@ -51,6 +51,7 @@ const webpackConfig = {
     alias: {
       config$: path.resolve(__dirname, configFilePath),
     },
+    extensions: ['.tsx', '.ts', '.js'],
   },
   devtool: env === 'local' ? 'eval-source-map' : 'source-map',
   devServer: {
