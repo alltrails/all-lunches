@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App renders the expected view 1`] = `<Dashboard />`;
+exports[`App renders the expected view 1`] = `<Connect(Dashboard) />`;
 
 exports[`App renders the expected view when loading 1`] = `
 <style__LoadingWrapper>

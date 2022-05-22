@@ -1,7 +1,17 @@
 **All Lunches**
 
-- Mobile view
-- Tests
+Published site: XXXX.com
+
+yarn install
+yarn dev
+
+debug local storage
+
+node version / npm version
+
+3rd party packages
+
+- Firebase
 
 Known issues and warnings
 

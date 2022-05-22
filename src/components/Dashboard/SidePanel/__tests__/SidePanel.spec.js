@@ -7,7 +7,7 @@ import SidePanel from '../SidePanel';
 
 describe('SidePanel', () => {
   const defaultProps = {
-    setFavoritedRestaurants: () => {},
+    updateFavoritedRestaurants: () => {},
     favoritedItemIds: [],
     highlightedRestaurantId: null,
     isUpdatingFavorites: false,

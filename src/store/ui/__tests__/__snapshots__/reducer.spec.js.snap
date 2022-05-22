@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UI reducer QUERY_AREA.ERROR works as expected 1`] = `
+Object {
+  "currentOpenToast": Object {
+    "message": "Something went wrong",
+    "type": "error",
+  },
+}
+`;
+
+exports[`UI reducer QUERY_AREA.PENDING works as expected 1`] = `
+Object {
+  "currentOpenToast": null,
+}
+`;
+
+exports[`UI reducer QUERY_AREA.SUCCESS works as expected 1`] = `
+Object {
+  "currentOpenToast": Object {
+    "message": "Successfully fetched restaurants!",
+    "type": "success",
+  },
+}
+`;
+
+exports[`UI reducer TOGGLE_OPEN_TOAST works as expected 1`] = `
+Object {
+  "currentOpenToast": Object {
+    "message": "Oops, something went wrong",
+    "type": "error",
+  },
+}
+`;
+
+exports[`UI reducer UPDATE_FAVORITED_RESTAURANTS.ERROR works as expected 1`] = `
+Object {
+  "currentOpenToast": Object {
+    "message": "Something went wrong",
+    "type": "error",
+  },
+}
+`;
+
+exports[`UI reducer UPDATE_FAVORITED_RESTAURANTS.PENDING works as expected 1`] = `
+Object {
+  "currentOpenToast": null,
+}
+`;
+
+exports[`UI reducer UPDATE_FAVORITED_RESTAURANTS.SUCCESS works as expected 1`] = `
+Object {
+  "currentOpenToast": Object {
+    "message": "Successfully added your favorite restaurant!",
+    "type": "success",
+  },
+}
+`;
+
+exports[`UI reducer returns the initial state 1`] = `
+Object {
+  "currentOpenToast": null,
+}
+`;

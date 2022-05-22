@@ -18,8 +18,8 @@ export function* queryAreaSaga({ payload: searchText }) {
   } = window;
 
   try {
-    let restaurants;
     if (!mapsInstance) throw new Error('Unable to load Google Maps API');
+    let restaurants;
 
     const latLng = yield create(mapsInstance.LatLng, ALL_TRAILS_HQ_LAT, ALL_TRAILS_HQ_LNG);
 
@@ -46,7 +46,9 @@ export function* queryAreaSaga({ payload: searchText }) {
     if (status === mapsInstance.places.PlacesServiceStatus.OK) restaurants = camelizeKeys(results);
     else throw new Error('Unable to fetch any restaurants in this area');
 
-    debug('Data received', restaurants);
+    if (!restaurants) throw new Error('Unable to fetch any restaurants in this area');
+
+    debug('Restaurants successfully fetched', restaurants);
 
     yield put(queryArea.success(restaurants));
   } catch (e) {

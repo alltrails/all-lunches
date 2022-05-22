@@ -1,5 +1,5 @@
 import queryArea from './queryArea';
-import setFavoritedRestaurants from './setFavoritedRestaurants';
+import updateFavoritedRestaurants from './updateFavoritedRestaurants';
 import fetchFavoritedRestaurants from './fetchFavoritedRestaurants';
 
-export default [queryArea, setFavoritedRestaurants, fetchFavoritedRestaurants];
+export default [queryArea, updateFavoritedRestaurants, fetchFavoritedRestaurants];

@@ -3,8 +3,7 @@
 import { call, put } from 'redux-saga/effects';
 
 import UAParser from 'ua-parser-js';
-import { initializeApp } from 'firebase/app';
-import { enableIndexedDbPersistence } from 'firebase/firestore';
+import { enableOfflinePersistence, initializeFirebase } from 'lib/firebaseHelpers';
 
 import Config from 'config'; // eslint-disable-line
 import awaitAsyncAction from 'lib/awaitAsyncAction';
@@ -30,9 +29,9 @@ describe('Saga: sessionManager', () => {
       expect(generator.next().value).toEqual(put(setUserAgent(userAgentSetup())));
     });
 
-    it('initializes firebase', () => {
-      expect(generator.next().value).toEqual(call(initializeApp, Config.firebaseConfig));
-      expect(generator.next(app).value).toEqual(call(enableIndexedDbPersistence, {}));
+    it('initializes firebase and offline persistence', () => {
+      expect(generator.next().value).toEqual(call(initializeFirebase));
+      expect(generator.next(app).value).toEqual(call(enableOfflinePersistence, app, {}));
     });
 
     it('validates user', () => {
@@ -70,7 +69,7 @@ describe('Saga: sessionManager', () => {
       expect(generator.next().value).toEqual(put(setUserAgent(userAgentSetup())));
     });
 
-    it('initializes firebase', () => {
+    it('initializes firebase and offline persistence', () => {
       expect(generator.next().value).toEqual(call(initializeApp, Config.firebaseConfig));
       expect(generator.next(app).value).toEqual(call(enableIndexedDbPersistence, {}));
     });
@@ -106,7 +105,7 @@ describe('Saga: sessionManager', () => {
       expect(generator.next().value).toEqual(put(setUserAgent(userAgentSetup())));
     });
 
-    it('initializes firebase', () => {
+    it('initializes firebase and offline persistence', () => {
       expect(generator.next().value).toEqual(call(initializeApp, Config.firebaseConfig));
       expect(generator.next(app).value).toEqual(call(enableIndexedDbPersistence, {}));
     });
