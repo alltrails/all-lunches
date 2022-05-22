@@ -3,9 +3,9 @@
 import { call, put } from 'redux-saga/effects';
 
 import UAParser from 'ua-parser-js';
+
 import { enableOfflinePersistence, initializeFirebase } from 'lib/firebaseHelpers';
 
-import Config from 'config'; // eslint-disable-line
 import awaitAsyncAction from 'lib/awaitAsyncAction';
 
 import { setUserAgent } from 'store/userAgent/actions';
@@ -13,25 +13,21 @@ import { VALIDATE_USER, validateUser } from 'store/user/actions';
 import { QUERY_AREA, queryArea } from 'store/restaurants/actions';
 import { initializeApplication } from 'store/app/actions';
 
-import sessionManager from '../sessionManager';
+import sessionManager, { debug } from '../sessionManager';
 
 describe('Saga: sessionManager', () => {
-  const userAgentSetup = () => ({
-    userAgent: UAParser(),
-  });
-
   describe('Functions as expected', () => {
     const generator = sessionManager();
     const app = {};
 
     it('sets up the app', () => {
       expect(generator.next().value).toEqual(put(initializeApplication()));
-      expect(generator.next().value).toEqual(put(setUserAgent(userAgentSetup())));
+      expect(generator.next().value).toEqual(put(setUserAgent(UAParser())));
     });
 
     it('initializes firebase and offline persistence', () => {
       expect(generator.next().value).toEqual(call(initializeFirebase));
-      expect(generator.next(app).value).toEqual(call(enableOfflinePersistence, app, {}));
+      expect(generator.next(app).value).toEqual(call(enableOfflinePersistence, app, debug));
     });
 
     it('validates user', () => {
@@ -66,12 +62,12 @@ describe('Saga: sessionManager', () => {
 
     it('sets up the app', () => {
       expect(generator.next().value).toEqual(put(initializeApplication()));
-      expect(generator.next().value).toEqual(put(setUserAgent(userAgentSetup())));
+      expect(generator.next().value).toEqual(put(setUserAgent(UAParser())));
     });
 
     it('initializes firebase and offline persistence', () => {
       expect(generator.next().value).toEqual(call(initializeFirebase));
-      expect(generator.next(app).value).toEqual(call(enableOfflinePersistence, app, {}));
+      expect(generator.next(app).value).toEqual(call(enableOfflinePersistence, app, debug));
     });
 
     it('dispatches the error action validating user', () => {
@@ -100,12 +96,12 @@ describe('Saga: sessionManager', () => {
 
     it('sets up the app', () => {
       expect(generator.next().value).toEqual(put(initializeApplication()));
-      expect(generator.next().value).toEqual(put(setUserAgent(userAgentSetup())));
+      expect(generator.next().value).toEqual(put(setUserAgent(UAParser())));
     });
 
     it('initializes firebase and offline persistence', () => {
       expect(generator.next().value).toEqual(call(initializeFirebase));
-      expect(generator.next(app).value).toEqual(call(enableOfflinePersistence, app, {}));
+      expect(generator.next(app).value).toEqual(call(enableOfflinePersistence, app, debug));
     });
 
     it('validates user', () => {

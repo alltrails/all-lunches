@@ -1,0 +1,301 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RestaurantDetails renders the expected view when all properties exist 1`] = `
+<style__HyperLinkWrapper
+  href="https://www.google.com/maps/search/?api=1&query=Uncle%20Vito's%20Pizza&query_place_id=ChIJkVLoONZ_j4ARx2vJ4umERnI"
+  rel="noopener noreferrer"
+  target="_blank"
+>
+  <style__PlaceImage
+    alt="storefront"
+    src="https://maps.googleapis.com/maps/api/place/js/PhotoService.GetPhoto?1sAap_uEBdIFbWc8LjoO8hOGn1QTJBeq21XOCk6ZHFGBmGWWqrImCdbERWb-K4T9Mq_QB5Mspi1Kiyc_GTU_XRbcReDLyGaIWdJWcssnsj3mZmy5xQsGCPeuOiBjjDEciT92r5iUeEAvSNn4dPN2r9rng9SH3fTXpxlT6BA5TB1MPzYfQ_GU5J&3u4032&5m1&2e1&callback=none&key=AIzaSyDg0Zd8r5Jf5i4MWlM9_eGYrpyRUeqBbPY&token=10623"
+  />
+  <style__MetadataWrapper>
+    <style__Title>
+      Uncle Vito's Pizza
+    </style__Title>
+    <style__RatingStarsWrapper>
+      <style__StarIconWrapper
+        key="0"
+      >
+        <StarIcon
+          color="#f5d24a"
+        />
+      </style__StarIconWrapper>
+      <style__StarIconWrapper
+        key="1"
+      >
+        <StarIcon
+          color="#f5d24a"
+        />
+      </style__StarIconWrapper>
+      <style__StarIconWrapper
+        key="2"
+      >
+        <StarIcon
+          color="#f5d24a"
+        />
+      </style__StarIconWrapper>
+      <style__StarIconWrapper
+        key="3"
+      >
+        <StarIcon
+          color="#f5d24a"
+        />
+      </style__StarIconWrapper>
+      <style__StarIconWrapper
+        key="4"
+      >
+        <StarIcon
+          color="#E6E6E6"
+        />
+      </style__StarIconWrapper>
+      <style__UserRatingsTotalText>
+        (
+        1427
+        )
+      </style__UserRatingsTotalText>
+    </style__RatingStarsWrapper>
+    <style__PriceLevelWrapper>
+      <span>
+        $
+         
+      </span>
+      <span>
+         
+        •
+         
+      </span>
+      <span>
+         
+        restaurant
+      </span>
+    </style__PriceLevelWrapper>
+  </style__MetadataWrapper>
+</style__HyperLinkWrapper>
+`;
+
+exports[`RestaurantDetails renders the expected view when no properties exist 1`] = `
+<style__HyperLinkWrapper
+  href={null}
+  rel="noopener noreferrer"
+  target="_blank"
+>
+  <style__PlaceImage
+    alt="storefront"
+    src="test-file-stub"
+  />
+  <style__MetadataWrapper>
+    <style__Title>
+      N/A
+    </style__Title>
+    <style__RatingStarsWrapper>
+      <style__StarIconWrapper
+        key="0"
+      >
+        <StarIcon
+          color="#E6E6E6"
+        />
+      </style__StarIconWrapper>
+      <style__StarIconWrapper
+        key="1"
+      >
+        <StarIcon
+          color="#E6E6E6"
+        />
+      </style__StarIconWrapper>
+      <style__StarIconWrapper
+        key="2"
+      >
+        <StarIcon
+          color="#E6E6E6"
+        />
+      </style__StarIconWrapper>
+      <style__StarIconWrapper
+        key="3"
+      >
+        <StarIcon
+          color="#E6E6E6"
+        />
+      </style__StarIconWrapper>
+      <style__StarIconWrapper
+        key="4"
+      >
+        <StarIcon
+          color="#E6E6E6"
+        />
+      </style__StarIconWrapper>
+      <style__UserRatingsTotalText>
+        (
+        0
+        )
+      </style__UserRatingsTotalText>
+    </style__RatingStarsWrapper>
+    <style__PriceLevelWrapper>
+      <span>
+        N/A
+         
+      </span>
+      <span>
+         
+        •
+         
+      </span>
+      <span>
+         
+        N/A
+      </span>
+    </style__PriceLevelWrapper>
+  </style__MetadataWrapper>
+</style__HyperLinkWrapper>
+`;
+
+exports[`RestaurantDetails renders the expected view when price level is high 1`] = `
+<style__HyperLinkWrapper
+  href="https://www.google.com/maps/search/?api=1&query=Uncle%20Vito's%20Pizza&query_place_id=ChIJkVLoONZ_j4ARx2vJ4umERnI"
+  rel="noopener noreferrer"
+  target="_blank"
+>
+  <style__PlaceImage
+    alt="storefront"
+    src="https://maps.googleapis.com/maps/api/place/js/PhotoService.GetPhoto?1sAap_uEBdIFbWc8LjoO8hOGn1QTJBeq21XOCk6ZHFGBmGWWqrImCdbERWb-K4T9Mq_QB5Mspi1Kiyc_GTU_XRbcReDLyGaIWdJWcssnsj3mZmy5xQsGCPeuOiBjjDEciT92r5iUeEAvSNn4dPN2r9rng9SH3fTXpxlT6BA5TB1MPzYfQ_GU5J&3u4032&5m1&2e1&callback=none&key=AIzaSyDg0Zd8r5Jf5i4MWlM9_eGYrpyRUeqBbPY&token=10623"
+  />
+  <style__MetadataWrapper>
+    <style__Title>
+      Uncle Vito's Pizza
+    </style__Title>
+    <style__RatingStarsWrapper>
+      <style__StarIconWrapper
+        key="0"
+      >
+        <StarIcon
+          color="#f5d24a"
+        />
+      </style__StarIconWrapper>
+      <style__StarIconWrapper
+        key="1"
+      >
+        <StarIcon
+          color="#f5d24a"
+        />
+      </style__StarIconWrapper>
+      <style__StarIconWrapper
+        key="2"
+      >
+        <StarIcon
+          color="#f5d24a"
+        />
+      </style__StarIconWrapper>
+      <style__StarIconWrapper
+        key="3"
+      >
+        <StarIcon
+          color="#f5d24a"
+        />
+      </style__StarIconWrapper>
+      <style__StarIconWrapper
+        key="4"
+      >
+        <StarIcon
+          color="#E6E6E6"
+        />
+      </style__StarIconWrapper>
+      <style__UserRatingsTotalText>
+        (
+        1427
+        )
+      </style__UserRatingsTotalText>
+    </style__RatingStarsWrapper>
+    <style__PriceLevelWrapper>
+      <span>
+        $$$$$
+         
+      </span>
+      <span>
+         
+        •
+         
+      </span>
+      <span>
+         
+        restaurant
+      </span>
+    </style__PriceLevelWrapper>
+  </style__MetadataWrapper>
+</style__HyperLinkWrapper>
+`;
+
+exports[`RestaurantDetails renders the expected view when rating level is low 1`] = `
+<style__HyperLinkWrapper
+  href="https://www.google.com/maps/search/?api=1&query=Uncle%20Vito's%20Pizza&query_place_id=ChIJkVLoONZ_j4ARx2vJ4umERnI"
+  rel="noopener noreferrer"
+  target="_blank"
+>
+  <style__PlaceImage
+    alt="storefront"
+    src="https://maps.googleapis.com/maps/api/place/js/PhotoService.GetPhoto?1sAap_uEBdIFbWc8LjoO8hOGn1QTJBeq21XOCk6ZHFGBmGWWqrImCdbERWb-K4T9Mq_QB5Mspi1Kiyc_GTU_XRbcReDLyGaIWdJWcssnsj3mZmy5xQsGCPeuOiBjjDEciT92r5iUeEAvSNn4dPN2r9rng9SH3fTXpxlT6BA5TB1MPzYfQ_GU5J&3u4032&5m1&2e1&callback=none&key=AIzaSyDg0Zd8r5Jf5i4MWlM9_eGYrpyRUeqBbPY&token=10623"
+  />
+  <style__MetadataWrapper>
+    <style__Title>
+      Uncle Vito's Pizza
+    </style__Title>
+    <style__RatingStarsWrapper>
+      <style__StarIconWrapper
+        key="0"
+      >
+        <StarIcon
+          color="#E6E6E6"
+        />
+      </style__StarIconWrapper>
+      <style__StarIconWrapper
+        key="1"
+      >
+        <StarIcon
+          color="#E6E6E6"
+        />
+      </style__StarIconWrapper>
+      <style__StarIconWrapper
+        key="2"
+      >
+        <StarIcon
+          color="#E6E6E6"
+        />
+      </style__StarIconWrapper>
+      <style__StarIconWrapper
+        key="3"
+      >
+        <StarIcon
+          color="#E6E6E6"
+        />
+      </style__StarIconWrapper>
+      <style__StarIconWrapper
+        key="4"
+      >
+        <StarIcon
+          color="#E6E6E6"
+        />
+      </style__StarIconWrapper>
+      <style__UserRatingsTotalText>
+        (
+        1427
+        )
+      </style__UserRatingsTotalText>
+    </style__RatingStarsWrapper>
+    <style__PriceLevelWrapper>
+      <span>
+        $
+         
+      </span>
+      <span>
+         
+        •
+         
+      </span>
+      <span>
+         
+        restaurant
+      </span>
+    </style__PriceLevelWrapper>
+  </style__MetadataWrapper>
+</style__HyperLinkWrapper>
+`;

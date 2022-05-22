@@ -1,10 +1,10 @@
 import Debug from 'debug';
-import { put, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
 import { camelizeKeys } from 'humps';
 
 import { create } from 'lib/reduxUtils';
 
-import { ALL_TRAILS_HQ_LAT, ALL_TRAILS_HQ_LNG } from 'lib/mapUtils';
+import { getMapsInstance, ALL_TRAILS_HQ_LAT, ALL_TRAILS_HQ_LNG } from 'lib/mapUtils';
 
 import { QUERY_AREA, queryArea } from '../actions';
 
@@ -13,11 +13,9 @@ const debug = Debug('all-lunches:store:map:sagas:queryArea');
 export function* queryAreaSaga({ payload: searchText }) {
   debug('Saga called', searchText);
 
-  const {
-    google: { maps: mapsInstance },
-  } = window;
-
   try {
+    const mapsInstance = yield call(getMapsInstance);
+
     if (!mapsInstance) throw new Error('Unable to load Google Maps API');
     let restaurants;
 

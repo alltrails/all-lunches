@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MobileViewButton renders the expected view 1`] = `
+<style__Button
+  onClick={[Function]}
+>
+  Map
+  <style__Icon
+    alt=""
+    src="test-file-stub"
+  />
+</style__Button>
+`;
+
+exports[`MobileViewButton renders the expected view when map view is enabled 1`] = `
+<style__Button
+  onClick={[Function]}
+>
+  List
+  <style__Icon
+    alt=""
+    src="test-file-stub"
+  />
+</style__Button>
+`;

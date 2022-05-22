@@ -40,7 +40,7 @@ describe('Saga: updateFavoritedRestaurants', () => {
     expect(generator.next(db).value).toEqual(call(getFirebaseDoc, db, 'restaurants', userId));
     expect(generator.next(ref).value).toEqual(call(postDoc, ref, data));
     expect(generator.throw(fetchError).value).toEqual(
-      put(updateFavoritedRestaurants.error(fetchError, action)),
+      put(updateFavoritedRestaurants.error('Some error happened')),
     );
     expect(generator.next().done).toBe(true);
   });

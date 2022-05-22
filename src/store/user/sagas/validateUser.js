@@ -14,7 +14,7 @@ import {
 import { fetchFavoritedRestaurants, FETCH_FAVORITED_RESTAURANTS } from 'store/restaurants/actions';
 import { VALIDATE_USER, validateUser } from '../actions';
 
-const debug = Debug('all-lunches:store:user:sagas:validateUser');
+export const debug = Debug('all-lunches:store:user:sagas:validateUser');
 
 export function* validateUserSaga({ payload: app }) {
   debug('Saga called');

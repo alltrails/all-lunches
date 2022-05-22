@@ -14,8 +14,12 @@ describe('Saga: fetchFavoritedRestaurants', () => {
   const action = { payload: 'some_user_id' };
   const db = {};
   const restaurantUserRef = {};
-  const restaurantData = { restaurant: ['some_restaurant_id'] };
-  const response = () => ({ data: () => restaurantData });
+  const result = ['some_restaurant_id'];
+  const response = {
+    data: () => ({
+      favorites: ['some_restaurant_id'],
+    }),
+  };
 
   it('listens to actions', () => {
     const generator = fetchFavoritedRestaurantsDefault();
@@ -35,7 +39,7 @@ describe('Saga: fetchFavoritedRestaurants', () => {
     );
     expect(generator.next(restaurantUserRef).value).toEqual(call(fetchDoc, restaurantUserRef));
     expect(generator.throw(fetchError).value).toEqual(
-      put(fetchFavoritedRestaurants.error(fetchError, action)),
+      put(fetchFavoritedRestaurants.error('Some error happened')),
     );
     expect(generator.next().done).toBe(true);
   });
@@ -56,7 +60,7 @@ describe('Saga: fetchFavoritedRestaurants', () => {
 
     it('dispatches the success action', () => {
       expect(generator.next(response).value).toEqual(
-        put(fetchFavoritedRestaurants.success(restaurantData)),
+        put(fetchFavoritedRestaurants.success(result)),
       );
       expect(generator.next().done).toBe(true);
     });

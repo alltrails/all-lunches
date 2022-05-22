@@ -75,6 +75,7 @@ describe('SidePanelContainer', () => {
 
   describe('Handling mouse events', () => {
     it('calls the setSelectedRestaurantId with the item id when mouse hovers over item', () => {
+      jest.useFakeTimers();
       const { props, wrapper } = setup({ setSelectedRestaurantId: jest.fn() });
       const sidePanelComponent = wrapper.find(SidePanel);
 

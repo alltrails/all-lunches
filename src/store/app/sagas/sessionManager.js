@@ -15,7 +15,7 @@ import { VALIDATE_USER, validateUser } from 'store/user/actions';
 import { QUERY_AREA, queryArea } from 'store/restaurants/actions';
 import { initializeApplication } from 'store/app/actions';
 
-const debug = Debug('all-lunches:store:app:sagas:sessionManager');
+export const debug = Debug('all-lunches:store:app:sagas:sessionManager');
 
 function* setUserAgentAction() {
   const userAgent = UAParser();

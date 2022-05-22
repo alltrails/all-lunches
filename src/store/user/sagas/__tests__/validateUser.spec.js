@@ -15,12 +15,12 @@ import {
 import { fetchFavoritedRestaurants, FETCH_FAVORITED_RESTAURANTS } from 'store/restaurants/actions';
 import { VALIDATE_USER, validateUser } from 'store/user/actions';
 
-import validateUserDefault, { validateUserSaga } from '../validateUser';
+import validateUserDefault, { validateUserSaga, debug } from '../validateUser';
 
 describe('Saga: validateUser', () => {
-  const appInstance = {};
-  const authInstance = {};
-  const action = { payload: appInstance };
+  const app = {};
+  const auth = {};
+  const action = { payload: app };
   const userObject = { uid: 'some_user_id' };
 
   it('listens to actions', () => {
@@ -32,17 +32,17 @@ describe('Saga: validateUser', () => {
   describe('Functions as expected', () => {
     const generator = validateUserSaga(action);
 
-    it('sets up firebase reference', () => {
-      expect(generator.next().value).toEqual(call(initializeApplicationCheck, appInstance));
+    it('sets up firebase', () => {
+      expect(generator.next().value).toEqual(call(initializeApplicationCheck, app));
       expect(generator.next().value).toEqual(call(getAuthentication));
-      expect(generator.next(authInstance).value).toEqual(
-        call(handleAuthenticationStateChange, authInstance, {}),
+      expect(generator.next(auth).value).toEqual(
+        call(handleAuthenticationStateChange, auth, debug),
       );
     });
 
     it('fetches favorited restaurants', () => {
       expect(generator.next(userObject).value).toEqual(
-        put(fetchFavoritedRestaurants, userObject.uid),
+        put(fetchFavoritedRestaurants(userObject.uid)),
       );
       expect(generator.next().value).toEqual(call(awaitAsyncAction, FETCH_FAVORITED_RESTAURANTS));
     });
@@ -59,51 +59,49 @@ describe('Saga: validateUser', () => {
     const generator = validateUserSaga(action);
 
     const error = {
-      response: {
-        data: { message: 'Danger zone' },
-        status: 401,
-      },
+      message: 'Danger zone',
+      status: 401,
     };
     const errorAction = { payload: error };
 
-    it('sets up firebase reference', () => {
-      expect(generator.next().value).toEqual(call(initializeApplicationCheck, appInstance));
+    it('sets up firebase', () => {
+      expect(generator.next().value).toEqual(call(initializeApplicationCheck, app));
       expect(generator.next().value).toEqual(call(getAuthentication));
-      expect(generator.next(authInstance).value).toEqual(
-        call(handleAuthenticationStateChange, authInstance, {}),
+      expect(generator.next(auth).value).toEqual(
+        call(handleAuthenticationStateChange, auth, debug),
       );
     });
 
     it('fetches favorited restaurants', () => {
       expect(generator.next(userObject).value).toEqual(
-        put(fetchFavoritedRestaurants, userObject.uid),
+        put(fetchFavoritedRestaurants(userObject.uid)),
       );
       expect(generator.next().value).toEqual(call(awaitAsyncAction, FETCH_FAVORITED_RESTAURANTS));
     });
 
-    it('dispatches the success action', () => {
+    it('dispatches the error action', () => {
       expect(generator.next([undefined, errorAction]).value).toEqual(
-        put(validateUser.error(error)),
+        put(validateUser.error('Danger zone')),
       );
       expect(generator.next().done).toBe(true);
     });
   });
 
-  describe('Functions as expected signing in user anonymously', () => {
+  describe('Functions as expected logging in user anonymously', () => {
     const generator = validateUserSaga(action);
 
-    it('sets up firebase reference', () => {
-      expect(generator.next().value).toEqual(call(initializeApplicationCheck, appInstance));
+    it('sets up firebase', () => {
+      expect(generator.next().value).toEqual(call(initializeApplicationCheck, app));
       expect(generator.next().value).toEqual(call(getAuthentication));
-      expect(generator.next(authInstance).value).toEqual(
-        call(handleAuthenticationStateChange, authInstance, {}),
+      expect(generator.next(auth).value).toEqual(
+        call(handleAuthenticationStateChange, auth, debug),
       );
     });
 
     it('signs in user anonymously', () => {
-      expect(generator.next({}).value).toEqual(call(signUserInAnonymously, authInstance));
+      expect(generator.next(null).value).toEqual(call(signUserInAnonymously, auth));
       expect(generator.next({ user: userObject }).value).toEqual(
-        call(setUserLocalPersistence, authInstance),
+        call(setUserLocalPersistence, auth),
       );
     });
 
@@ -113,25 +111,25 @@ describe('Saga: validateUser', () => {
     });
   });
 
-  describe('Functions as expected signing in user anonymously errors', () => {
+  describe('Functions as expected when logging in user anonymously errors', () => {
     const generator = validateUserSaga(action);
     const fetchError = new Error('Some error happened');
 
-    it('sets up firebase reference', () => {
-      expect(generator.next().value).toEqual(call(initializeApplicationCheck, appInstance));
+    it('sets up firebase', () => {
+      expect(generator.next().value).toEqual(call(initializeApplicationCheck, app));
       expect(generator.next().value).toEqual(call(getAuthentication));
-      expect(generator.next(authInstance).value).toEqual(
-        call(handleAuthenticationStateChange, authInstance, {}),
+      expect(generator.next(auth).value).toEqual(
+        call(handleAuthenticationStateChange, auth, debug),
       );
     });
 
     it('signs in user anonymously', () => {
-      expect(generator.next({}).value).toEqual(call(signUserInAnonymously, authInstance));
+      expect(generator.next(null).value).toEqual(call(signUserInAnonymously, auth));
     });
 
     it('dispatches the error action', () => {
       expect(generator.throw(fetchError).value).toEqual(
-        put(validateUser.error(fetchError, action)),
+        put(validateUser.error('Some error happened')),
       );
       expect(generator.next().done).toBe(true);
     });

@@ -22,7 +22,11 @@ const FilterContainer = ({ setFilterOption }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (selectedMenuOption) setFilterOption(selectedMenuOption);
+
+    if (selectedMenuOption) {
+      setFilterOption(selectedMenuOption);
+      setIsMenuOpen(false);
+    }
   };
 
   return (
