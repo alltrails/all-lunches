@@ -8,7 +8,7 @@ import SidePanel from '../SidePanel';
 
 describe('SidePanelContainer', () => {
   const defaultProps = {
-    setFavoritedRestaurants: () => {},
+    updateFavoritedRestaurants: () => {},
     favoritedItemIds: [],
     highlightedRestaurantId: null,
     isUpdatingFavorites: false,
@@ -29,49 +29,53 @@ describe('SidePanelContainer', () => {
 
   describe('Handling favorite item changes', () => {
     describe('When selected', () => {
-      it('calls the setFavoritedRestaurants with the added item id when selected', () => {
-        const { props, wrapper } = setup({ setFavoritedRestaurants: jest.fn() });
+      it('calls the updateFavoritedRestaurants with the added item id when selected', () => {
+        const { props, wrapper } = setup({ updateFavoritedRestaurants: jest.fn() });
         const sidePanelComponent = wrapper.find(SidePanel);
 
         const itemId = 'some_item_id';
 
         sidePanelComponent.props().onFavoriteItemChange(itemId, false);
 
-        expect(props.setFavoritedRestaurants).toBeCalledWith([itemId]);
+        expect(props.updateFavoritedRestaurants).toBeCalledWith([itemId]);
       });
 
-      it('calls the setFavoritedRestaurants with previous item ids selected and the new added item id when selected', () => {
+      it('calls the updateFavoritedRestaurants with previous item ids selected and the new added item id when selected', () => {
         const { props, wrapper } = setup({
           favoritedItemIds: ['another_item_id'],
-          setFavoritedRestaurants: jest.fn(),
+          updateFavoritedRestaurants: jest.fn(),
         });
         const sidePanelComponent = wrapper.find(SidePanel);
 
         const itemId = 'some_item_id';
         sidePanelComponent.props().onFavoriteItemChange(itemId, false);
 
-        expect(props.setFavoritedRestaurants).toBeCalledWith([...props.favoritedItemIds, itemId]);
+        expect(props.updateFavoritedRestaurants).toBeCalledWith([
+          ...props.favoritedItemIds,
+          itemId,
+        ]);
       });
     });
 
     describe('When un-selecting', () => {
-      it('calls the setFavoritedRestaurants with the previous item unselected', () => {
+      it('calls the updateFavoritedRestaurants with the previous item unselected', () => {
         const { props, wrapper } = setup({
           favoritedItemIds: ['another_item_id'],
-          setFavoritedRestaurants: jest.fn(),
+          updateFavoritedRestaurants: jest.fn(),
         });
         const sidePanelComponent = wrapper.find(SidePanel);
 
         const itemId = 'another_item_id';
         sidePanelComponent.props().onFavoriteItemChange(itemId, true);
 
-        expect(props.setFavoritedRestaurants).toBeCalledWith([]);
+        expect(props.updateFavoritedRestaurants).toBeCalledWith([]);
       });
     });
   });
 
   describe('Handling mouse events', () => {
     it('calls the setSelectedRestaurantId with the item id when mouse hovers over item', () => {
+      jest.useFakeTimers();
       const { props, wrapper } = setup({ setSelectedRestaurantId: jest.fn() });
       const sidePanelComponent = wrapper.find(SidePanel);
 

@@ -1,10 +1,10 @@
 import Debug from 'debug';
-import { put, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
 import { camelizeKeys } from 'humps';
 
 import { create } from 'lib/reduxUtils';
 
-import { ALL_TRAILS_HQ_LAT, ALL_TRAILS_HQ_LNG } from 'lib/mapUtils';
+import { getMapsInstance, ALL_TRAILS_HQ_LAT, ALL_TRAILS_HQ_LNG } from 'lib/mapUtils';
 
 import { QUERY_AREA, queryArea } from '../actions';
 
@@ -13,13 +13,11 @@ const debug = Debug('all-lunches:store:map:sagas:queryArea');
 export function* queryAreaSaga({ payload: searchText }) {
   debug('Saga called', searchText);
 
-  const {
-    google: { maps: mapsInstance },
-  } = window;
-
   try {
-    let restaurants;
+    const mapsInstance = yield call(getMapsInstance);
+
     if (!mapsInstance) throw new Error('Unable to load Google Maps API');
+    let restaurants;
 
     const latLng = yield create(mapsInstance.LatLng, ALL_TRAILS_HQ_LAT, ALL_TRAILS_HQ_LNG);
 
@@ -46,7 +44,9 @@ export function* queryAreaSaga({ payload: searchText }) {
     if (status === mapsInstance.places.PlacesServiceStatus.OK) restaurants = camelizeKeys(results);
     else throw new Error('Unable to fetch any restaurants in this area');
 
-    debug('Data received', restaurants);
+    if (!restaurants) throw new Error('Unable to fetch any restaurants in this area');
+
+    debug('Restaurants successfully fetched', restaurants);
 
     yield put(queryArea.success(restaurants));
   } catch (e) {

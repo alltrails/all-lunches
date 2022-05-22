@@ -70,7 +70,7 @@ RestaurantDetails.defaultProps = {
   name: 'N/A',
   photoUrl: null,
   priceLevel: 0,
-  rating: 'N/A',
+  rating: 0,
   userRatingsTotal: 0,
   placeUrl: null,
   supportingText: 'N/A',

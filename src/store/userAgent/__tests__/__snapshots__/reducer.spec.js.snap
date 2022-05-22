@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Reducer SET_USER_AGENT works as expected when there is device type 1`] = `
+Object {
+  "userAgent": Object {
+    "device": Object {
+      "device": "mobile",
+      "vendor": "Apple",
+    },
+  },
+}
+`;
+
+exports[`Reducer returns the initial state 1`] = `Object {}`;

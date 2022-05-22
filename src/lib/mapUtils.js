@@ -7,6 +7,14 @@ import generatePopUp from './generatePopUp';
 export const ALL_TRAILS_HQ_LAT = 37.7908279;
 export const ALL_TRAILS_HQ_LNG = -122.4082753;
 
+export const getMapsInstance = () => {
+  const {
+    google: { maps: mapsInstance },
+  } = window;
+
+  return mapsInstance;
+};
+
 export const toGeoJSONFeature = (coordinates, properties) => ({
   type: 'Feature',
   geometry: {

@@ -1,7 +1,7 @@
 import Debug from 'debug';
 import { call, put, takeLatest } from 'redux-saga/effects';
 
-import { doc, getDoc, getFirestore } from 'firebase/firestore';
+import { fetchDoc, getFirebaseDB, getFirebaseDoc } from 'lib/firebaseHelpers';
 
 import { FETCH_FAVORITED_RESTAURANTS, fetchFavoritedRestaurants } from '../actions';
 
@@ -11,10 +11,10 @@ export function* fetchFavoritedRestaurantsSaga({ payload: userId }) {
   debug('Saga called', userId);
 
   try {
-    const db = getFirestore();
+    const db = yield call(getFirebaseDB);
 
-    const restaurantUserRef = doc(db, 'restaurants', userId);
-    const docSnap = yield call(getDoc, restaurantUserRef);
+    const restaurantUserRef = yield call(getFirebaseDoc, db, 'restaurants', userId);
+    const docSnap = yield call(fetchDoc, restaurantUserRef);
 
     const data = docSnap.data();
     const favorites = data?.favorites || [];

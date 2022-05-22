@@ -7,12 +7,13 @@ import SidePanel from '../SidePanel';
 
 describe('SidePanel', () => {
   const defaultProps = {
-    setFavoritedRestaurants: () => {},
     favoritedItemIds: [],
     highlightedRestaurantId: null,
     isUpdatingFavorites: false,
+    onFavoriteItemChange: () => {},
+    onMouseEnter: () => {},
+    onMouseLeave: () => {},
     restaurants: restaurantsMock,
-    setSelectedRestaurantId: () => {},
   };
   const setup = shallowSetup(SidePanel, defaultProps);
 

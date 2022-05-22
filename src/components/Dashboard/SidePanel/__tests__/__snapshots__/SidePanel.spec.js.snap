@@ -7,6 +7,7 @@ exports[`SidePanel renders the expected view 1`] = `
       isSelected={false}
       key="ChIJkVLoONZ_j4ARx2vJ4umERnI"
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
     >
       <RestaurantDetails
         name="Uncle Vito's Pizza"
@@ -31,6 +32,7 @@ exports[`SidePanel renders the expected view 1`] = `
       isSelected={false}
       key="ChIJg7cNIYyAhYAR8D4ml1oItTg"
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
     >
       <RestaurantDetails
         name="Roxanne's Cafe"
@@ -55,6 +57,7 @@ exports[`SidePanel renders the expected view 1`] = `
       isSelected={false}
       key="ChIJaa9OAYyAhYARxwgUHLNEpOY"
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
     >
       <RestaurantDetails
         name="Bouche"
@@ -79,6 +82,7 @@ exports[`SidePanel renders the expected view 1`] = `
       isSelected={false}
       key="ChIJvXXIOoyAhYARe-ixq3WdmrY"
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
     >
       <RestaurantDetails
         name="Sons & Daughters"
@@ -110,6 +114,7 @@ exports[`SidePanel renders the expected view when the first item is favorited 1`
       isSelected={false}
       key="ChIJkVLoONZ_j4ARx2vJ4umERnI"
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
     >
       <RestaurantDetails
         name="Uncle Vito's Pizza"
@@ -134,6 +139,7 @@ exports[`SidePanel renders the expected view when the first item is favorited 1`
       isSelected={false}
       key="ChIJg7cNIYyAhYAR8D4ml1oItTg"
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
     >
       <RestaurantDetails
         name="Roxanne's Cafe"
@@ -158,6 +164,7 @@ exports[`SidePanel renders the expected view when the first item is favorited 1`
       isSelected={false}
       key="ChIJaa9OAYyAhYARxwgUHLNEpOY"
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
     >
       <RestaurantDetails
         name="Bouche"
@@ -182,6 +189,7 @@ exports[`SidePanel renders the expected view when the first item is favorited 1`
       isSelected={false}
       key="ChIJvXXIOoyAhYARe-ixq3WdmrY"
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
     >
       <RestaurantDetails
         name="Sons & Daughters"
@@ -213,6 +221,7 @@ exports[`SidePanel renders the expected view when updating favorites 1`] = `
       isSelected={false}
       key="ChIJkVLoONZ_j4ARx2vJ4umERnI"
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
     >
       <RestaurantDetails
         name="Uncle Vito's Pizza"
@@ -237,6 +246,7 @@ exports[`SidePanel renders the expected view when updating favorites 1`] = `
       isSelected={false}
       key="ChIJg7cNIYyAhYAR8D4ml1oItTg"
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
     >
       <RestaurantDetails
         name="Roxanne's Cafe"
@@ -261,6 +271,7 @@ exports[`SidePanel renders the expected view when updating favorites 1`] = `
       isSelected={false}
       key="ChIJaa9OAYyAhYARxwgUHLNEpOY"
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
     >
       <RestaurantDetails
         name="Bouche"
@@ -285,6 +296,7 @@ exports[`SidePanel renders the expected view when updating favorites 1`] = `
       isSelected={false}
       key="ChIJvXXIOoyAhYARe-ixq3WdmrY"
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
     >
       <RestaurantDetails
         name="Sons & Daughters"

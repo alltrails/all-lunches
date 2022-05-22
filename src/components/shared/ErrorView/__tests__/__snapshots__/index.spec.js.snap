@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorView renders the expected view when the text prop does not exist 1`] = `
+<style__ErrorViewWrapper>
+  <style__ErrorText>
+    Looks like there was an issue. Please refresh the page or try again.
+  </style__ErrorText>
+</style__ErrorViewWrapper>
+`;
+
+exports[`ErrorView renders the expected view when the text prop exists 1`] = `
+<style__ErrorViewWrapper>
+  <style__ErrorText>
+    Sorry, an error occurred.
+  </style__ErrorText>
+</style__ErrorViewWrapper>
+`;

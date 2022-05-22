@@ -113,6 +113,8 @@
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
     ],
-    "testEnvironment": "jsdom"
+    "globals": {
+      "window": {}
+    }
   }
 }

@@ -10,6 +10,7 @@ describe('SearchBarContainer', () => {
   const defaultProps = {
     isLoading: false,
     queryArea: () => {},
+    openToast: () => {},
   };
   const setup = shallowSetup(SearchBarContainer, defaultProps);
   const searchInputText = 'coffee';
@@ -75,6 +76,20 @@ describe('SearchBarContainer', () => {
       searchBarComponent.props().onSubmit(submitEvent);
 
       expect(props.queryArea).not.toBeCalled();
+    });
+
+    it('calls the openToast callback prop with an input value of empty space', () => {
+      const { props, wrapper } = setup({
+        openToast: jest.fn(),
+      });
+      const submitEvent = { preventDefault: () => {} };
+      let searchBarComponent = wrapper.find(SearchBar);
+      searchBarComponent.props().onChange(createChangeEvent('searchText', ''));
+
+      searchBarComponent = wrapper.find(SearchBar);
+      searchBarComponent.props().onSubmit(submitEvent);
+
+      expect(props.openToast).toBeCalled();
     });
   });
 });

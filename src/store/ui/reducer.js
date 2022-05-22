@@ -1,15 +1,18 @@
 /* eslint-disable default-param-last */
 
 import { TOGGLE_OPEN_TOAST } from 'store/ui/actions';
-import { QUERY_AREA, SET_FAVORITED_RESTAURANTS } from 'store/restaurants/actions';
+import { QUERY_AREA, UPDATE_FAVORITED_RESTAURANTS } from 'store/restaurants/actions';
 
 export const INITIAL_STATE = {
   currentOpenToast: null,
 };
 
 const successToastMessages = {
-  [SET_FAVORITED_RESTAURANTS.SUCCESS]: { message: 'Successfully added!', type: 'success' },
-  [QUERY_AREA.SUCCESS]: { message: 'Successfully loaded!', type: 'success' },
+  [UPDATE_FAVORITED_RESTAURANTS.SUCCESS]: {
+    message: 'Successfully added your favorite restaurant!',
+    type: 'success',
+  },
+  [QUERY_AREA.SUCCESS]: { message: 'Successfully fetched restaurants!', type: 'success' },
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -21,18 +24,19 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         currentOpenToast: payload,
       };
+    case UPDATE_FAVORITED_RESTAURANTS.PENDING:
     case QUERY_AREA.PENDING:
       return {
         ...state,
         currentOpenToast: null,
       };
-    case SET_FAVORITED_RESTAURANTS.SUCCESS:
+    case UPDATE_FAVORITED_RESTAURANTS.SUCCESS:
     case QUERY_AREA.SUCCESS:
       return {
         ...state,
         currentOpenToast: successToastMessages[type],
       };
-    case SET_FAVORITED_RESTAURANTS.ERROR:
+    case UPDATE_FAVORITED_RESTAURANTS.ERROR:
     case QUERY_AREA.ERROR:
       return {
         ...state,

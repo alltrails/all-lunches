@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { isLoadingSelector } from 'store/restaurants/selectors';
+
 import * as restaurantsActions from 'store/restaurants/actions';
+import * as uiActions from 'store/ui/actions';
 
 import SearchBar from './SearchBar';
 
@@ -13,9 +15,10 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   queryArea: restaurantsActions.queryArea,
+  openToast: uiActions.toggleOpenToast,
 };
 
-export const SearchBarContainer = ({ isLoading, queryArea }) => {
+export const SearchBarContainer = ({ openToast, isLoading, queryArea }) => {
   const [searchText, setSearchText] = useState('');
 
   const handleChange = (event) => {
@@ -28,6 +31,7 @@ export const SearchBarContainer = ({ isLoading, queryArea }) => {
     const searchTextTrimmed = searchText.trim();
 
     if (searchTextTrimmed) queryArea(searchTextTrimmed);
+    else openToast({ message: 'Oops, looks like you need to type in a search', type: 'error' });
   };
 
   return (
@@ -43,6 +47,7 @@ export const SearchBarContainer = ({ isLoading, queryArea }) => {
 SearchBarContainer.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   queryArea: PropTypes.func.isRequired,
+  openToast: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchBarContainer);
