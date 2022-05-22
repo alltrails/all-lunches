@@ -9,7 +9,7 @@ export const INITIAL_STATE = {
 
 const successToastMessages = {
   [UPDATE_FAVORITED_RESTAURANTS.SUCCESS]: {
-    message: 'Successfully added your favorite restaurant!',
+    message: 'Successfully updated your restaurants!',
     type: 'success',
   },
   [QUERY_AREA.SUCCESS]: { message: 'Successfully fetched restaurants!', type: 'success' },

@@ -1,11 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
 import colors from 'styles/colors';
 
 import { RingSpinner } from './style';
 
-const LoadingSpinner = ({ color }) => (
+type LoadingSpinnerProps = {
+  color?: string;
+};
+
+const LoadingSpinner = ({ color = colors.green }: LoadingSpinnerProps) => (
   <RingSpinner color={color}>
     <div />
     <div />
@@ -13,13 +15,5 @@ const LoadingSpinner = ({ color }) => (
     <div />
   </RingSpinner>
 );
-
-LoadingSpinner.propTypes = {
-  color: PropTypes.string,
-};
-
-LoadingSpinner.defaultProps = {
-  color: colors.green,
-};
 
 export default LoadingSpinner;

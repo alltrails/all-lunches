@@ -15,16 +15,26 @@ import {
   StarIconWrapper,
 } from './style';
 
+type RestaurantDetailsProps = {
+  name?: string;
+  photoUrl?: string;
+  placeUrl?: string;
+  priceLevel?: number;
+  rating?: number;
+  supportingText?: string;
+  userRatingsTotal?: number;
+};
+
 const RestaurantDetails = ({
-  name,
-  photoUrl,
-  placeUrl,
-  priceLevel,
-  rating,
-  supportingText,
-  userRatingsTotal,
-}) => {
-  const getPriceLevel = (price) => {
+  name = 'N/A',
+  photoUrl = '',
+  placeUrl = '',
+  priceLevel = 0,
+  rating = 0,
+  supportingText = 'N/A',
+  userRatingsTotal = 0,
+}: RestaurantDetailsProps) => {
+  const getPriceLevel = (price: number) => {
     if (!price) return 'N/A';
     let dollarSigns = '';
 

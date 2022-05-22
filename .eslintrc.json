@@ -1,5 +1,5 @@
 {
-  "extends": ["airbnb", "prettier", "plugin:storybook/recommended"],
+  "extends": ["airbnb-typescript", "prettier", "plugin:storybook/recommended"],
   "plugins": ["prettier", "module-resolver"],
   "env": {
     "browser": true,
@@ -41,8 +41,12 @@
     "ecmaVersion": 2020
   },
   "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
     "import/ignore": ["node_modules\\/(?!@storybook)"],
     "import/resolver": {
+      "typescript": {},
       "babel-module": {
         "alias": {
           "__mocks__": "./src/__mocks__",

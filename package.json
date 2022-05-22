@@ -19,7 +19,8 @@
     "dev:prod": "NODE_ENV=prod webpack-dev-server --mode development",
     "lint": "eslint ./src",
     "test": "jest",
-    "storybook": "start-storybook -s ./ -p 3000 -c .storybook --ci"
+    "storybook": "start-storybook -s ./ -p 3000 -c .storybook --ci",
+    "check-types": "tsc"
   },
   "dependencies": {
     "@babel/runtime": "^7.16.3",
@@ -56,6 +57,7 @@
     "@babel/plugin-transform-runtime": "^7.16.0",
     "@babel/preset-env": "^7.16.0",
     "@babel/preset-react": "^7.16.0",
+    "@babel/preset-typescript": "^7.17.12",
     "@sentry/webpack-plugin": "^1.18.3",
     "@storybook/addon-a11y": "^6.4.19",
     "@storybook/addon-actions": "^6.4.19",
@@ -64,6 +66,8 @@
     "@storybook/builder-webpack5": "^6.4.19",
     "@storybook/manager-webpack5": "^6.4.19",
     "@storybook/react": "^6.4.19",
+    "@typescript-eslint/eslint-plugin": "^5.25.0",
+    "@typescript-eslint/parser": "^5.25.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^28.1.0",
@@ -77,8 +81,10 @@
     "enzyme-to-json": "^3.6.2",
     "eslint": "^8.11.0",
     "eslint-config-airbnb": "^19.0.0",
+    "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-babel-module": "^5.3.1",
+    "eslint-import-resolver-typescript": "^2.7.1",
     "eslint-plugin-cumul8": "^1.4.56",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-jsx-a11y": "^6.5.1",
@@ -94,6 +100,7 @@
     "jest-react-hooks-shallow": "^1.5.1",
     "prettier": "^2.6.0",
     "style-loader": "^3.3.1",
+    "typescript": "^4.6.4",
     "webpack": "^5.64.0",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.5.0"

@@ -32,6 +32,10 @@ export const CardItem = styled.li`
     `
     border: 2px solid ${colors.green};
   `}
+
+  &.focus-visible {
+    border: 2px solid ${colors.green};
+  }
 `;
 
 export const FavoriteHeartWrapper = styled.div`
