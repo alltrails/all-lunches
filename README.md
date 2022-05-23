@@ -45,6 +45,7 @@ Things to note
 
 - Google places deprecation warnings in the console. If given more time, I'd fix.
 - An prop type warning when opening and closing the filter options menu. This is due to the ref I added for the filter button that allows the menu to close when the menu is open.
+- When running tests, a `console.error` will appear saying this browser does not support `cancelAnimationFrame` or `requestAnimationFrame`. See https://github.com/facebook/jest/issues/4545#issuecomment-332762365
 
 ### Known limitations
 
