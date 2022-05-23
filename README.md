@@ -2,7 +2,7 @@
 
 **Deployed live site**: https://all-lunches.web.app
 
-Note: Using personal API key to be able to restrict access to just this website.
+Note: Using personal API key to be able to restrict access to just this domain.
 
 ---
 
@@ -15,7 +15,7 @@ yarn dev
 
 **Note:**
 
-- To see DebugJS logs in your console, type `localStorage.debug = "all-lunches:*"`, press enter and refresh your page.
+- To see DebugJS logs, open your console, type `localStorage.debug = "all-lunches:*"`, press `enter` and refresh your page.
 - Node `v14.17.3` / Yarn `1.22.17`
 - Developed and QA'd only on the latest Chrome (`v100+`)
 
@@ -25,23 +25,23 @@ yarn dev
 yarn storybook
 ```
 
-### Tests
+### Tests / Linter
 
 ```
-yarn test
+yarn test && yarn lint
 ```
 
 ### 3rd party packages
 
 - Firebase for hosting and storing of favorite restaurants
-- TypeScript (only the shared components)
+- TypeScript
 - Storybook
 - Jest
 - Redux Sagas
 - MapBox GL
 - React Hot Toasts
 - Styled Components
-- Sentry / Segment for hosted site
+- Sentry / Segment for deployed site
 
 ### Known issues and warnings
 
