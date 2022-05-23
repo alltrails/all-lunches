@@ -25,7 +25,7 @@ yarn storybook
 yarn test
 ```
 
-Things to note
+**Things to note**
 
 - To see DebugJS logs in your console, type `localStorage.debug = "all-lunches:*"`, press enter and refresh your page.
 - Node `v14.17.3` / Yarn `1.22.17`
