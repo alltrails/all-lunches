@@ -90,6 +90,7 @@ const Map = ({ restaurants, setSelectedRestaurantId, highlightedRestaurant }) =>
 
         if (restaurantFeatures.length) {
           const { properties } = restaurantFeatures[0];
+
           setMarkerActive({ coordinates, id, properties, prevHoveredId }, mapContainer, popUpRef);
         }
       }
