@@ -47,6 +47,7 @@ yarn test && yarn lint
 
 - Google Places deprecation warnings in the console.
 - An instance of prop type warning when opening and closing the filter options menu. This is due to the ref I added for the filter button.
+- When running tests, a `console.error` will appear saying this browser does not support `cancelAnimationFrame` or `requestAnimationFrame`. See https://github.com/facebook/jest/issues/4545#issuecomment-332762365
 
 ### Known limitations
 
