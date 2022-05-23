@@ -1,7 +1,5 @@
 # All Lunches Project
 
----
-
 **Deployed live site**: https://all-lunches.web.app
 
 Note: Using personal API key to be able to restrict access to just this website.
