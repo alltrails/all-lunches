@@ -1,6 +1,6 @@
 **All Lunches**
 
-Published site: XXXX.com
+Deployed live site (This API Key is personal and restricted to this domain): https://all-lunches.web.app
 
 yarn install
 yarn dev

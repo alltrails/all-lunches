@@ -34,8 +34,7 @@ const webpackConfig = {
   },
   plugins: [
     new HTMLWebpackPlugin({
-      filename: 'index.html',
-      googlePlacesAPIKey: `https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_PLACES_API}&libraries=places`,
+      googlePlacesAPIUrl: `https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_PLACES_API}&libraries=places`,
       isAnalyticsEnabled: config.isAnalyticsEnabled,
       segmentKey: config.segmentKey,
       template: path.resolve(__dirname, 'public', 'index.html'),
@@ -73,7 +72,7 @@ if (config.isAnalyticsEnabled) {
       org: 'sauerapple',
       project: 'all-lunches',
       ignore: ['node_modules', 'webpack.config.js'],
-      include: './build',
+      include: './dist',
       options: { deploy: { env } },
     }),
   );
