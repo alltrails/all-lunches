@@ -13,6 +13,12 @@ yarn install
 yarn dev
 ```
 
+**Note:**
+
+- To see DebugJS logs in your console, type `localStorage.debug = "all-lunches:*"`, press enter and refresh your page.
+- Node `v14.17.3` / Yarn `1.22.17`
+- Developed and QA'd only on the latest Chrome (`v100+`)
+
 ### Storybook
 
 ```
@@ -24,12 +30,6 @@ yarn storybook
 ```
 yarn test
 ```
-
-**Things to note**
-
-- To see DebugJS logs in your console, type `localStorage.debug = "all-lunches:*"`, press enter and refresh your page.
-- Node `v14.17.3` / Yarn `1.22.17`
-- Developed and QA'd only on the latest Chrome (`v100+`)
 
 ### 3rd party packages
 
