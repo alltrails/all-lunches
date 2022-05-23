@@ -11,6 +11,7 @@ const colors = {
   white: '#fff',
   whiteBackground: '#f8f8f8',
   heartGrayBorder: '#cccccc',
+  black: '#000',
 };
 
 export default colors;

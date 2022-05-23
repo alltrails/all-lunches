@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { boolean } from '@storybook/addon-knobs';
+
 import { storiesOf } from '@storybook/react';
 
 import { restaurantsMock } from '__mocks__';
@@ -29,11 +31,12 @@ const SidePanelStory = () => {
     <Wrapper>
       <SidePanel
         favoritedItemIds={favoritedItemIds}
-        onFavoriteItem={handleChange}
+        highlightedRestaurantId={null}
+        isUpdatingFavorites={boolean('Is updating favorites?', false)}
+        onFavoriteItemChange={handleChange}
         onMouseEnter={() => {}}
         onMouseLeave={() => {}}
         restaurants={restaurantsMock}
-        highlightedRestaurantId={null}
       />
     </Wrapper>
   );

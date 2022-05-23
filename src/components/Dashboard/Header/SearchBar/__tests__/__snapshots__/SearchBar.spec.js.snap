@@ -39,9 +39,7 @@ exports[`SearchBar renders the expected view when loading 1`] = `
     onClick={[Function]}
   >
     <style__LoadingWrapper>
-      <LoadingSpinner
-        color="#428813"
-      />
+      <LoadingSpinner />
     </style__LoadingWrapper>
   </style__Button>
 </style__Form>

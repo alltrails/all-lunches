@@ -15,7 +15,7 @@ import {
   updateSourceLayer,
 } from 'lib/mapUtils';
 
-import * as mapActions from 'store/restaurants/actions';
+import * as restaurantsActions from 'store/restaurants/actions';
 import { restaurantsMapSelector, highlightedRestaurantSelector } from 'store/restaurants/selectors';
 
 import { MapWrapper } from './style';
@@ -26,13 +26,13 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  setSelectedRestaurantId: mapActions.setSelectedRestaurantId,
+  setHighlightedRestaurantId: restaurantsActions.setHighlightedRestaurantId,
 };
 
 mapboxgl.accessToken =
   'pk.eyJ1Ijoic2F1ZXJhcHBsZSIsImEiOiJja3VlcHJtd2UxbW9wMnFvOGtzbXEyNHgwIn0.mJ6PjDnMxeZinsKiSs_o6A';
 
-const Map = ({ restaurants, setSelectedRestaurantId, highlightedRestaurant }) => {
+const Map = ({ restaurants, setHighlightedRestaurantId, highlightedRestaurant }) => {
   const mapRef = useRef(null);
   const popUpRef = useRef(
     new mapboxgl.Popup({ maxWidth: '400px', closeButton: false, offset: 15 }),
@@ -55,19 +55,7 @@ const Map = ({ restaurants, setSelectedRestaurantId, highlightedRestaurant }) =>
       const features = map.queryRenderedFeatures(e.point);
       map.getCanvas().style.cursor = 'pointer';
 
-      if (features.length > 0) {
-        const {
-          geometry: { coordinates },
-          properties,
-        } = features[0];
-
-        setMarkerActive(
-          { coordinates, id: properties.id, properties, prevHoveredId },
-          map,
-          popUpRef,
-        );
-        setSelectedRestaurantId(features[0].properties.id);
-      }
+      if (features.length > 0) setHighlightedRestaurantId(features[0].properties.id);
     });
 
     addMapControls(map, mapboxgl);
@@ -77,7 +65,15 @@ const Map = ({ restaurants, setSelectedRestaurantId, highlightedRestaurant }) =>
   }, []);
 
   useEffect(() => {
-    if (restaurants && mapContainer) updateSourceLayer(mapContainer, restaurants);
+    if (restaurants && mapContainer) {
+      updateSourceLayer(mapContainer, restaurants);
+
+      mapContainer.flyTo({
+        essential: true,
+        center: [ALL_TRAILS_HQ_LNG, ALL_TRAILS_HQ_LAT],
+        zoom: 10,
+      });
+    }
   }, [restaurants]);
 
   useEffect(() => {
@@ -90,6 +86,7 @@ const Map = ({ restaurants, setSelectedRestaurantId, highlightedRestaurant }) =>
 
         if (restaurantFeatures.length) {
           const { properties } = restaurantFeatures[0];
+
           setMarkerActive({ coordinates, id, properties, prevHoveredId }, mapContainer, popUpRef);
         }
       }
@@ -101,7 +98,7 @@ const Map = ({ restaurants, setSelectedRestaurantId, highlightedRestaurant }) =>
 
 Map.propTypes = {
   restaurants: PropTypes.arrayOf(restuarantMapType),
-  setSelectedRestaurantId: PropTypes.func.isRequired,
+  setHighlightedRestaurantId: PropTypes.func.isRequired,
   highlightedRestaurant: PropTypes.arrayOf(restaurantDetailsType),
 };
 

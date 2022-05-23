@@ -1,5 +1,4 @@
-/* eslint-disable default-param-last */
-
+/* eslint-disable @typescript-eslint/default-param-last */
 import { TOGGLE_OPEN_TOAST } from 'store/ui/actions';
 import { QUERY_AREA, UPDATE_FAVORITED_RESTAURANTS } from 'store/restaurants/actions';
 

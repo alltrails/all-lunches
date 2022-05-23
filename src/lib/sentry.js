@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-expressions */
+/* eslint-disable @typescript-eslint/no-unused-expressions */
 import * as Sentry from '@sentry/browser';
 import * as Integrations from '@sentry/integrations';
 import Config from 'config'; // eslint-disable-line

@@ -1,4 +1,4 @@
-/* eslint-disable default-param-last */
+/* eslint-disable @typescript-eslint/default-param-last */
 import { VALIDATE_USER } from './actions';
 
 export const INITIAL_STATE = {

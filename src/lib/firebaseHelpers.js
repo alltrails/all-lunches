@@ -14,7 +14,7 @@ import Config from 'config'; // eslint-disable-line
 export const initializeFirebase = () => initializeApp(Config.firebaseConfig);
 
 export const initializeApplicationCheck = async (app) =>
-  await initializeAppCheck(app, {
+  initializeAppCheck(app, {
     // Optional argument. If true, the SDK automatically refreshes App Check
     // tokens as needed.
     isTokenAutoRefreshEnabled: true,
@@ -22,9 +22,9 @@ export const initializeApplicationCheck = async (app) =>
     size: 'invisible',
   });
 
-export const getAuthentication = async () => await getAuth();
+export const getAuthentication = async () => getAuth();
 
-export const signUserInAnonymously = async (auth) => await signInAnonymously(auth);
+export const signUserInAnonymously = async (auth) => signInAnonymously(auth);
 
 export const handleAuthenticationStateChange = (auth, debug) =>
   new Promise((resolve) => {
@@ -37,7 +37,7 @@ export const handleAuthenticationStateChange = (auth, debug) =>
   });
 
 export const setUserLocalPersistence = async (auth) =>
-  await setPersistence(auth, browserLocalPersistence);
+  setPersistence(auth, browserLocalPersistence);
 
 export const enableOfflinePersistence = (app, debug) => {
   const db = getFirestore(app);
@@ -60,6 +60,6 @@ export const getFirebaseDB = () => getFirestore();
 
 export const getFirebaseDoc = (db, refName, docID) => doc(db, refName, docID);
 
-export const fetchDoc = async (ref) => await getDoc(ref);
+export const fetchDoc = async (ref) => getDoc(ref);
 
-export const postDoc = async (ref, data) => await setDoc(ref, data);
+export const postDoc = async (ref, data) => setDoc(ref, data);

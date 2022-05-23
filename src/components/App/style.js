@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { media } from 'styles';
+import { media, colors } from 'styles';
 
 export const LoadingWrapper = styled.div`
   display: flex;
@@ -12,7 +12,7 @@ export const LoadingWrapper = styled.div`
 
 export const LoadingTitle = styled.h3`
   font-size: 2.2rem;
-  color: #626262;
+  color: ${colors.black};
   margin: 0 0 20px 0;
 
   ${media.twoDimMin.tablet`font-size: 2.4rem;`}

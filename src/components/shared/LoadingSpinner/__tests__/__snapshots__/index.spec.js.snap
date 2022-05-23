@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoadingSpinner renders the expected view with a color option 1`] = `
+<style__RingSpinner
+  color="#fff"
+>
+  <div />
+  <div />
+  <div />
+  <div />
+</style__RingSpinner>
+`;
+
+exports[`LoadingSpinner renders the expected view with no color option 1`] = `
+<style__RingSpinner
+  color="#428813"
+>
+  <div />
+  <div />
+  <div />
+  <div />
+</style__RingSpinner>
+`;

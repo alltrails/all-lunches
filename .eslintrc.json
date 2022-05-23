@@ -6,6 +6,7 @@
     "es2021": true
   },
   "rules": {
+    "react/jsx-filename-extension": [0, { "extensions": [".js", ".jsx"] }],
     "import/no-named-as-default": "off",
     "import/prefer-default-export": "off",
     "no-console": "error",
@@ -20,25 +21,15 @@
     "prefer-destructuring": ["error", { "object": true, "array": false }],
     "no-unused-vars": ["error", { "argsIgnorePattern": "req|res|next|val" }],
     "jsx-a11y/href-no-hash": ["off"],
-    "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx"] }],
     "react/function-component-definition": 0,
     "import/no-extraneous-dependencies": 0,
-    "import/no-unresolved": [
-      "error",
-      {
-        "ignore": ["@storybook/*"]
-      }
-    ],
-    "import/extensions": [
-      "error",
-      {
-        "js": "ignorePackages"
-      }
-    ]
+    "import/no-unresolved": 0,
+    "import/extensions": 0
   },
   "parserOptions": {
     "sourceType": "module",
-    "ecmaVersion": 2020
+    "ecmaVersion": 2020,
+    "project": ["./tsconfig.json"]
   },
   "settings": {
     "import/parsers": {

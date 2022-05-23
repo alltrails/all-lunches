@@ -27,7 +27,6 @@ if (container) {
           duration: 4000,
           style: {
             border: '1px solid #428813',
-            marginTop: '36px',
           },
         }}
       />

@@ -31,14 +31,14 @@ describe('Restaurants reducer', () => {
     });
   });
 
-  describe('SET_SELECTED_RESTAURANT_ID', () => {
+  describe('SET_HIGHLIGHTED_RESTAURANT_ID', () => {
     it('works as expected', () => {
       const testPayload = 'some_id';
 
       expect(
         reducer(INITIAL_STATE, {
           payload: testPayload,
-          type: types.SET_SELECTED_RESTAURANT_ID,
+          type: types.SET_HIGHLIGHTED_RESTAURANT_ID,
         }),
       ).toMatchSnapshot();
     });
