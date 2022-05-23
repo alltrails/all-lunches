@@ -236,9 +236,7 @@ exports[`SidePanel renders the expected view when updating favorites 1`] = `
         <style__FavoriteHeartButton
           onClick={[Function]}
         >
-          <LoadingSpinner
-            color="#428813"
-          />
+          <LoadingSpinner />
         </style__FavoriteHeartButton>
       </style__FavoriteHeartWrapper>
     </style__CardItem>
@@ -261,9 +259,7 @@ exports[`SidePanel renders the expected view when updating favorites 1`] = `
         <style__FavoriteHeartButton
           onClick={[Function]}
         >
-          <LoadingSpinner
-            color="#428813"
-          />
+          <LoadingSpinner />
         </style__FavoriteHeartButton>
       </style__FavoriteHeartWrapper>
     </style__CardItem>
@@ -286,9 +282,7 @@ exports[`SidePanel renders the expected view when updating favorites 1`] = `
         <style__FavoriteHeartButton
           onClick={[Function]}
         >
-          <LoadingSpinner
-            color="#428813"
-          />
+          <LoadingSpinner />
         </style__FavoriteHeartButton>
       </style__FavoriteHeartWrapper>
     </style__CardItem>
@@ -311,9 +305,7 @@ exports[`SidePanel renders the expected view when updating favorites 1`] = `
         <style__FavoriteHeartButton
           onClick={[Function]}
         >
-          <LoadingSpinner
-            color="#428813"
-          />
+          <LoadingSpinner />
         </style__FavoriteHeartButton>
       </style__FavoriteHeartWrapper>
     </style__CardItem>

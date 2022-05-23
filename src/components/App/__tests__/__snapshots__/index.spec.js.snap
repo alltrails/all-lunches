@@ -7,9 +7,7 @@ exports[`App renders the expected view when loading 1`] = `
   <style__LoadingTitle>
     Loading
   </style__LoadingTitle>
-  <LoadingSpinner
-    color="#428813"
-  />
+  <LoadingSpinner />
 </style__LoadingWrapper>
 `;
 

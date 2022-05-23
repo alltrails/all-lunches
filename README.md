@@ -31,6 +31,7 @@ Things to note
 ### 3rd party packages
 
 - Firebase for hosting and storing of favorite restaurants
+- TypeScript (only the shared components)
 - Storybook
 - Jest
 - Redux Sagas
