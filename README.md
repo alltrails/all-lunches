@@ -1,23 +1,23 @@
-# All Lunches
+**Deployed live site**: https://all-lunches.web.app
 
-Deployed live site (This API Key is personal and restricted to this domain): https://all-lunches.web.app
+Note: Using a personal API key to be able to restrict access.
 
-## Instructions
+---
 
-Local
+### Running locally
 
 ```
 yarn install
 yarn dev
 ```
 
-Storybook
+### Storybook
 
 ```
 yarn storybook
 ```
 
-Tests
+### Tests
 
 ```
 yarn test
@@ -25,7 +25,7 @@ yarn test
 
 Things to note
 
-- To see Debug-JS in your console logs, type `localStorage.debug = "all-lunches:*"`, press enter and refresh your page.
+- To see DebugJS logs in your console, type `localStorage.debug = "all-lunches:*"`, press enter and refresh your page.
 - Node `v14.17.3` / Yarn `1.22.17`
 
 ### 3rd party packages
@@ -47,6 +47,8 @@ Things to note
 ### Known limitations
 
 - When moving within the map, the location is hard coded to the all trails latitude and longitude headquarters. Ideally, we're updating the bounds of the map and when we search, we only search the bounds of the current map.
+
+- When icons are grouped together tightly, there's a noticeable delay in figuring out which icon the cursor is over so the restaurant you are updating might not update immediately when the icons are spread out more evenly.
 
 ### More time
 
