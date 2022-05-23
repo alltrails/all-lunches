@@ -1,4 +1,4 @@
-/* eslint-disable default-param-last */
+/* eslint-disable @typescript-eslint/default-param-last */
 import {
   UPDATE_FAVORITED_RESTAURANTS,
   FETCH_FAVORITED_RESTAURANTS,

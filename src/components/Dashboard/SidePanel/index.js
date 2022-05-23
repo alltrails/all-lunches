@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { restaurantDetailsType } from 'constants/propTypes';
-import debounce from 'lib/debounce';
 
 import * as restaurantsActions from 'store/restaurants/actions';
 import {
