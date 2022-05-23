@@ -24,7 +24,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   updateFavoritedRestaurants: restaurantsActions.updateFavoritedRestaurants,
-  setSelectedRestaurantId: restaurantsActions.setSelectedRestaurantId,
+  setHighlightedRestaurantId: restaurantsActions.setHighlightedRestaurantId,
 };
 
 export const SidePanelContainer = ({
@@ -33,7 +33,7 @@ export const SidePanelContainer = ({
   highlightedRestaurantId,
   isUpdatingFavorites,
   restaurants,
-  setSelectedRestaurantId,
+  setHighlightedRestaurantId,
 }) => {
   const handleFavoriteItemChange = (itemId, isSelected) => {
     let favoritedIds = favoritedItemIds;
@@ -45,11 +45,11 @@ export const SidePanelContainer = ({
   };
 
   const handleMouseEnter = (itemId) => {
-    debounce(setSelectedRestaurantId(itemId), 250);
+    setHighlightedRestaurantId(itemId);
   };
 
   const handleMouseLeave = () => {
-    setSelectedRestaurantId(null);
+    setHighlightedRestaurantId(null);
   };
 
   return (
@@ -71,7 +71,7 @@ SidePanelContainer.propTypes = {
   highlightedRestaurantId: PropTypes.string,
   isUpdatingFavorites: PropTypes.bool.isRequired,
   restaurants: PropTypes.arrayOf(restaurantDetailsType),
-  setSelectedRestaurantId: PropTypes.func.isRequired,
+  setHighlightedRestaurantId: PropTypes.func.isRequired,
 };
 
 SidePanelContainer.defaultProps = {

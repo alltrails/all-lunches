@@ -4,7 +4,7 @@ import {
   FETCH_FAVORITED_RESTAURANTS,
   QUERY_AREA,
   SET_FILTER_OPTION,
-  SET_SELECTED_RESTAURANT_ID,
+  SET_HIGHLIGHTED_RESTAURANT_ID,
 } from './actions';
 
 export const INITIAL_STATE = {
@@ -25,7 +25,7 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         selectedFilterOption: payload,
       };
-    case SET_SELECTED_RESTAURANT_ID:
+    case SET_HIGHLIGHTED_RESTAURANT_ID:
       return {
         ...state,
         highlightedRestaurantId: payload,

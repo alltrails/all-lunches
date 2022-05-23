@@ -126,7 +126,7 @@ Object {
 }
 `;
 
-exports[`Restaurants reducer SET_SELECTED_RESTAURANT_ID works as expected 1`] = `
+exports[`Restaurants reducer SET_HIGHLIGHTED_RESTAURANT_ID works as expected 1`] = `
 Object {
   "favoritedItemIds": Array [],
   "highlightedRestaurantId": "some_id",

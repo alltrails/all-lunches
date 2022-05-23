@@ -13,7 +13,7 @@ describe('SidePanelContainer', () => {
     highlightedRestaurantId: null,
     isUpdatingFavorites: false,
     restaurants: restaurantsMock,
-    setSelectedRestaurantId: () => {},
+    setHighlightedRestaurantId: () => {},
   };
   const setup = shallowSetup(SidePanelContainer, defaultProps);
 
@@ -74,9 +74,9 @@ describe('SidePanelContainer', () => {
   });
 
   describe('Handling mouse events', () => {
-    it('calls the setSelectedRestaurantId with the item id when mouse hovers over item', () => {
+    it('calls the setHighlightedRestaurantId with the item id when mouse hovers over item', () => {
       jest.useFakeTimers();
-      const { props, wrapper } = setup({ setSelectedRestaurantId: jest.fn() });
+      const { props, wrapper } = setup({ setHighlightedRestaurantId: jest.fn() });
       const sidePanelComponent = wrapper.find(SidePanel);
 
       const hoveredItemId = 'some_item_id';
@@ -85,15 +85,15 @@ describe('SidePanelContainer', () => {
 
       jest.runAllTimers();
 
-      expect(props.setSelectedRestaurantId).toBeCalledWith(hoveredItemId);
+      expect(props.setHighlightedRestaurantId).toBeCalledWith(hoveredItemId);
     });
 
-    it('calls the setSelectedRestaurantId when mouse hovers outside of an item', () => {
-      const { props, wrapper } = setup({ setSelectedRestaurantId: jest.fn() });
+    it('calls the setHighlightedRestaurantId when mouse hovers outside of an item', () => {
+      const { props, wrapper } = setup({ setHighlightedRestaurantId: jest.fn() });
       const sidePanelComponent = wrapper.find(SidePanel);
 
       sidePanelComponent.props().onMouseLeave();
-      expect(props.setSelectedRestaurantId).toBeCalled();
+      expect(props.setHighlightedRestaurantId).toBeCalled();
     });
   });
 });

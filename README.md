@@ -1,6 +1,6 @@
 **Deployed live site**: https://all-lunches.web.app
 
-Note: Using a personal API key to be able to restrict access.
+Note: Using personal API key to be able to restrict access to just this website.
 
 ---
 
@@ -27,6 +27,7 @@ Things to note
 
 - To see DebugJS logs in your console, type `localStorage.debug = "all-lunches:*"`, press enter and refresh your page.
 - Node `v14.17.3` / Yarn `1.22.17`
+- Developed and QA'd only on the latest Chrome (`v100+`)
 
 ### 3rd party packages
 
@@ -52,6 +53,8 @@ Things to note
 - When icons are grouped together tightly, there's a noticeable delay in figuring out which icon the cursor is over so the restaurant you are updating might not update immediately when the icons are spread out more evenly.
 
 - When hovering over either a list item or a map icon, the map will zoom out because in order for MapBox to "fly to" the icon, it needs to be within bounds. Ideally we are updating the bounds based upon the coordinates of the restaurant and "flying to" the location appropriately. Due to time / scope, I opted out of this feature.
+
+- Only QA'd on Chrome. Ideally, I'd be checking against IE11, Safari, iOS Safari, iOS Chrome, Firefox, Edge, etc.
 
 ### More time
 

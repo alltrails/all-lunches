@@ -63,7 +63,7 @@ export const setMarkerActive = (
   if (popUps.length) popUps[0].remove();
 
   mapContainer.getCanvas().style.cursor = 'pointer';
-  mapContainer.flyTo({ center: coordinates, zoom: 14, speed: 0.7 });
+  mapContainer.flyTo({ essential: true, center: coordinates, speed: 0.7 });
 
   const coordinatesSliced = coordinates.slice();
   mapContainer.setLayoutProperty('restaurants-layer', 'icon-image', [
