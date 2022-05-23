@@ -13,7 +13,6 @@ Config.isAnalyticsEnabled &&
       new Integrations.CaptureConsole({
         levels: ['error'],
       }),
-      new Integrations.BrowserTracing(),
     ],
     tracesSampleRate: 1.0,
   });
